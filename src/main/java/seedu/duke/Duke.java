@@ -11,7 +11,8 @@ public class Duke {
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
                 + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
+                + "|____/ \\__,_|_|\\_\\___|\n"
+                + "---------------------------\n";
         System.out.println("Hello from\n" + logo);
         System.out.println("What is your name?");
 
