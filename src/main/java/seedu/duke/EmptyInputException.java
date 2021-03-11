@@ -1,3 +1,4 @@
 package seedu.duke;
-public class EmptyInputException extends Exception{
+
+public class EmptyInputException extends Exception {
 }

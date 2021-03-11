@@ -1,4 +1,4 @@
 package seedu.duke;
 
-public class InvalidCommandException extends Exception{
+public class InvalidCommandException extends Exception {
 }

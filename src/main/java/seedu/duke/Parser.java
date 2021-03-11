@@ -52,7 +52,7 @@ public class Parser {
         return location;
     }
 
-    public static String getBuilding (String userInput) {
+    public static String getBuilding(String userInput) {
         String buildingName = userInput.substring(10);
         return buildingName;
     }
