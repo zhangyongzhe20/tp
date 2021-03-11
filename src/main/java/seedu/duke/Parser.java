@@ -9,6 +9,7 @@ public class Parser {
 
 
     }
+
     public static int getIdSearch(String userInput) {
         int index = userInput.indexOf('/');
         int id = Integer.parseInt(userInput.substring(index));
@@ -64,6 +65,7 @@ public class Parser {
         }
         return false;
     }
+
     public static boolean isSearch(String userInput) {
         if (userInput.length() > 6) {
             if (userInput.substring(0, 6).equals("search")) {
@@ -72,6 +74,7 @@ public class Parser {
         }
         return false;
     }
+
     public static boolean isSearchIn(String userInput) {
         if (userInput.length() > 9) {
             if (userInput.substring(0, 6).equals("search in")) {
@@ -80,6 +83,7 @@ public class Parser {
         }
         return false;
     }
+
     public static boolean isFind(String userInput) {
         if (userInput.length() > 12) {
             if (userInput.substring(0, 12).equals("findFacility")) {

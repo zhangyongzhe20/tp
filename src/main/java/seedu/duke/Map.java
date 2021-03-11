@@ -34,7 +34,10 @@ public class Map {
             break;
         case INVALID:
             throw new InvalidCommandException();
+        default:
+            break;
         }
+
     }
 
     public static void main(String[] args) {
