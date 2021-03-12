@@ -50,16 +50,14 @@ public abstract class Facility {
 		LECTURETHEATER, CANTEEN, LIBRARY
 	}
 
-    public facilityType strToFacilityType(String type) {
-        facilityType fType = null;
+    public void strToFacilityType(String type) {
         if (type.equalsIgnoreCase("LECTURETHEATER")) {
-            fType = facilityType.LECTURETHEATER;
+            this.type = facilityType.LECTURETHEATER;
         } else if (type.equalsIgnoreCase("CANTEEN")) {
-            fType = facilityType.CANTEEN;
+            this.type = facilityType.CANTEEN;
         } else if (type.equalsIgnoreCase("LIBRARY")) {
-            fType = facilityType.LIBRARY;
+            this.type = facilityType.LIBRARY;
         }
-        return fType;
     }
 
     // return string representation of this facility

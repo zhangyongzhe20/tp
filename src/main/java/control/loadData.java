@@ -14,6 +14,19 @@ import java.util.Scanner;
 public class loadData {
     List<Facility> canteens;
     List<Facility> libraries;
+
+    public List<Facility> getCanteens() {
+        return canteens;
+    }
+
+    public List<Facility> getLibraries() {
+        return libraries;
+    }
+
+    public List<Facility> getLectureTheaters() {
+        return lectureTheaters;
+    }
+
     List<Facility> lectureTheaters;
     public static String[] files = {"canteens.txt", "libraries.txt", "lectureTheaters.txt"};
 
@@ -23,11 +36,14 @@ public class loadData {
         this.lectureTheaters = new ArrayList<>();
     }
 
-    public void load() throws FileNotFoundException {
+    public void load() throws FileNotFoundException, FileIsEmptyException {
         int numOfFiles = files.length;
         Facility facility = new Canteen();
         for (int i = 0; i < numOfFiles; i++) {
             File file = new File(files[i]);
+            if(file.length() == 0){
+                throw new FileIsEmptyException("This file is empty, please add some data");
+            }
             try {
                 file.createNewFile();
             } catch (IOException e) {
@@ -56,7 +72,7 @@ public class loadData {
                     }
                     facility.setFacilityID(temp[0]);
                     facility.setName(temp[1]);
-                    facility.setFacilityID(temp[2]);
+                    facility.strToFacilityType(temp[2]);
                     facility.setLocation(temp[3], temp[4]);
                     switch (i) {
                         case 0:
