@@ -1,5 +1,13 @@
 package seedu.duke;
 
+import control.FileIsEmptyException;
+import control.loadData;
+import entity.Facility;
+import entity.Location;
+
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import control.SearchFacility;
@@ -23,7 +31,8 @@ public class Map {
     public static void executeCommand(String input, Command c) throws InvalidCommandException, EmptyInputException {
         switch (c) {
         case LIST_ALL_LOCATIONS:
-            parser.getLocationsList(input);
+            String location = parser.getLocationsList(input);
+            Feature.listAllLocations(location);
             break;
         case SEARCH:
             String facility = parser.getFacilitySearch(input);
@@ -34,9 +43,11 @@ public class Map {
             parser.getBuilding(input);
             break;
         case FIND_FACILITY:
-            parser.getFindFacilityLocation(input);
-            parser.getFindFacilityType(input);
-            parser.getTopK(input);
+            String facilityLocation = parser.getFindFacilityLocation(input);
+            Location currentLocation = findFacilityByName(dataController, facilityLocation).getLocation();
+            String facilityType = parser.getFindFacilityType(input);
+            int topK = parser.getTopK(input);
+            findTopKFacility(currentLocation, facilityType, topK);
             break;
         case INVALID:
             throw new InvalidCommandException();
@@ -46,12 +57,64 @@ public class Map {
 
     }
 
+    private static void findTopKFacility(Location currentLocation, String facilityType, int topK) throws InvalidCommandException {
+        List<Facility> facilityList = new ArrayList<Facility>();
+        switch (facilityType) {
+        case "CANTEEN":
+            facilityList = new ArrayList<Facility>(dataController.getCanteens());
+            break;
+        case "LIBRARY":
+            facilityList = new ArrayList<Facility>(dataController.getLibraries());
+            break;
+        case "LECTURETHEATER":
+            facilityList = new ArrayList<Facility>(dataController.getLectureTheaters());
+            break;
+        default:
+            throw new InvalidCommandException();
+        }
+        for (int i = 0; i < topK; i++) {
+            int minIndex = 0;
+
+            for (int j = 1; j < facilityList.size(); j++) {
+                double newDistance = facilityList.get(j).getLocation().distanceTo(currentLocation);
+                double shortestDistance = facilityList.get(minIndex).getLocation().distanceTo(currentLocation);
+                if (newDistance<shortestDistance) {
+                    minIndex = j;
+                }
+            }
+            Facility facilityFound = facilityList.get(minIndex);
+            System.out.println(facilityFound.getName()+"@"+facilityFound.getLocation().getAddress());
+            facilityList.remove(minIndex);
+        }
+    }
+
+    private static Facility findFacilityByName(loadData ld, String facilityLocation) throws InvalidCommandException {
+        for (Facility f: ld.getLibraries()) {
+            if (f.getName().equals(facilityLocation)) {
+                break;
+            }
+            return f;
+        }
+        for (Facility f: ld.getCanteens()) {
+            if (f.getName().equals(facilityLocation)) {
+                break;
+            }
+            return f;
+        }
+        for (Facility f: ld.getLibraries()) {
+            if (f.getName().equals(facilityLocation)) {
+                break;
+            }
+            return f;
+        }
+        throw new InvalidCommandException();
+    }
+
     public static void main(String[] args) {
         show_welcome_msg();
         Command command;
         Scanner in = new Scanner(System.in);
         String userInput = ui.getString(in);
-
 
         while (!parser.isBye(userInput)) {
             if (parser.isList(userInput)) {
