@@ -41,8 +41,17 @@ public abstract class Facility {
     }
 
     public enum facilityType {
-		LECTURETHEATER, CANTEEN, LIBRARY
-	}
+      LECTURETHEATER, CANTEEN, LIBRARY
+    }
+    public void strToFacilityType(String type) {
+        if (type.equalsIgnoreCase("LECTURETHEATER")) {
+            this.type = FacilityType.LECTURETHEATER;
+        } else if (type.equalsIgnoreCase("CANTEEN")) {
+            this.type = FacilityType.CANTEEN;
+        } else if (type.equalsIgnoreCase("LIBRARY")) {
+            this.type = FacilityType.LIBRARY;
+        }
+    }
 
     // return string representation of this facility
     public String toString() {

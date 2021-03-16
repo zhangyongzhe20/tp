@@ -39,9 +39,9 @@ public class loadData {
         try {
             this.load();
         } catch (FileNotFoundException e) {
-
-        }  catch (FileIsEmptyException e) {
-            System.err.println("WARNING: file to initialize data from is empty.");
+            System.err.println("WARNING: did not find a file to initialize data from.");
+        } catch (FileIsEmptyException e) {
+            System.err.println("WARNING: file to initalize data from is empty.");
         }
     }
 
