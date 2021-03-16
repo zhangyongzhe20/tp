@@ -28,7 +28,7 @@ public class Map {
         System.out.println("Bye. Hope to see you again soon!\n");
     }
 
-    public static void executeCommand(String input, Command c, loadData ld) throws InvalidCommandException, EmptyInputException {
+    public static void executeCommand(String input, Command c) throws InvalidCommandException, EmptyInputException {
         switch (c) {
         case LIST_ALL_LOCATIONS:
             parser.getLocationsList(input);
@@ -43,37 +43,10 @@ public class Map {
             break;
         case FIND_FACILITY:
             String facilityLocation = parser.getFindFacilityLocation(input);
-            Location currentLocation = findFacilityByName(ld, facilityLocation).getLocation();
+            Location currentLocation = findFacilityByName(dataController, facilityLocation).getLocation();
             String facilityType = parser.getFindFacilityType(input);
             int topK = parser.getTopK(input);
-            List<Facility> facilityList = new ArrayList<Facility>();
-            switch (facilityType) {
-            case "CANTEEN":
-                facilityList = new ArrayList<Facility>(ld.getCanteens());
-                break;
-            case "LIBRARY":
-                facilityList = new ArrayList<Facility>(ld.getLibraries());
-                break;
-            case "LECTURETHEATER":
-                facilityList = new ArrayList<Facility>(ld.getLectureTheaters());
-                break;
-            default:
-                throw new InvalidCommandException();
-            }
-            for (int i = 0; i < topK; i++) {
-                int minIndex = 0;
-
-                for (int j = 1; j < facilityList.size(); j++) {
-                    double newDistance = facilityList.get(j).getLocation().distanceTo(currentLocation);
-                    double shortestDistance = facilityList.get(minIndex).getLocation().distanceTo(currentLocation);
-                    if (newDistance<shortestDistance) {
-                        minIndex = j;
-                    }
-                }
-                Facility facilityFound = facilityList.get(minIndex);
-                System.out.println(facilityFound.getName()+"@"+facilityFound.getLocation().getAddress());
-                facilityList.remove(minIndex);
-            }
+            findTopKFacility(currentLocation, facilityType, topK);
             break;
         case INVALID:
             throw new InvalidCommandException();
@@ -83,6 +56,37 @@ public class Map {
 
     }
 
+    private static void findTopKFacility(Location currentLocation, String facilityType, int topK) throws InvalidCommandException {
+        List<Facility> facilityList = new ArrayList<Facility>();
+        switch (facilityType) {
+        case "CANTEEN":
+            facilityList = new ArrayList<Facility>(dataController.getCanteens());
+            break;
+        case "LIBRARY":
+            facilityList = new ArrayList<Facility>(dataController.getLibraries());
+            break;
+        case "LECTURETHEATER":
+            facilityList = new ArrayList<Facility>(dataController.getLectureTheaters());
+            break;
+        default:
+            throw new InvalidCommandException();
+        }
+        for (int i = 0; i < topK; i++) {
+            int minIndex = 0;
+
+            for (int j = 1; j < facilityList.size(); j++) {
+                double newDistance = facilityList.get(j).getLocation().distanceTo(currentLocation);
+                double shortestDistance = facilityList.get(minIndex).getLocation().distanceTo(currentLocation);
+                if (newDistance<shortestDistance) {
+                    minIndex = j;
+                }
+            }
+            Facility facilityFound = facilityList.get(minIndex);
+            System.out.println(facilityFound.getName()+"@"+facilityFound.getLocation().getAddress());
+            facilityList.remove(minIndex);
+        }
+    }
+
     private static Facility findFacilityByName(loadData ld, String facilityLocation) throws InvalidCommandException {
         for (Facility f: ld.getLibraries()) {
             if (f.getName().equals(facilityLocation)) {
@@ -90,14 +94,12 @@ public class Map {
             }
             return f;
         }
-
         for (Facility f: ld.getCanteens()) {
             if (f.getName().equals(facilityLocation)) {
                 break;
             }
             return f;
         }
-
         for (Facility f: ld.getLibraries()) {
             if (f.getName().equals(facilityLocation)) {
                 break;
@@ -112,14 +114,6 @@ public class Map {
         Command command;
         Scanner in = new Scanner(System.in);
         String userInput = ui.getString(in);
-        loadData ld = new loadData();
-        try {
-            ld.load();
-        } catch (FileIsEmptyException e) {
-            System.out.println(e.getMessage());
-        } catch (FileNotFoundException e) {
-            System.out.println("OOPS!! Error loading data. FILE NOT FOUND!");
-        }
 
         while (!parser.isBye(userInput)) {
             if (parser.isList(userInput)) {
@@ -137,7 +131,7 @@ public class Map {
             }
 
             try {
-                executeCommand(userInput, command, ld);
+                executeCommand(userInput, command);
             } catch (InvalidCommandException e) {
                 System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
             } catch (EmptyInputException e) {
