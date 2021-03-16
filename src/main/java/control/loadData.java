@@ -81,7 +81,6 @@ public class loadData {
                     }
                     facility.setFacilityID(temp[0]);
                     facility.setName(temp[1]);
-                    facility.strToFacilityType(temp[2]);
                     facility.setLocation(temp[3], temp[4], temp[5]);
                     switch (i) {
                         case 0:

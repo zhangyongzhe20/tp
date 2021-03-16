@@ -3,15 +3,13 @@ package entity;
 public abstract class Facility {
     private int facilityID;
     private String name;
-    private facilityType type;
     private Location location;
     private Location address;
 
-    public Facility(int facilityID, String name, Location location, Location address, facilityType type) {
+    public Facility(int facilityID, String name, Location location, Location address) {
         this.facilityID = facilityID;
         this.name = name;
         this.location = location;
-        this.type = type;
         this.address = address;
     }
 
@@ -35,10 +33,6 @@ public abstract class Facility {
         this.name = name;
     }
 
-    public facilityType getType() {
-        return type;
-    }
-
     public Location getLocation() {return location; }
     public String getAddress() {return getLocation().getAddress(); }
 
@@ -49,16 +43,6 @@ public abstract class Facility {
     public enum facilityType {
 		LECTURETHEATER, CANTEEN, LIBRARY
 	}
-
-    public void strToFacilityType(String type) {
-        if (type.equalsIgnoreCase("LECTURETHEATER")) {
-            this.type = facilityType.LECTURETHEATER;
-        } else if (type.equalsIgnoreCase("CANTEEN")) {
-            this.type = facilityType.CANTEEN;
-        } else if (type.equalsIgnoreCase("LIBRARY")) {
-            this.type = facilityType.LIBRARY;
-        }
-    }
 
     // return string representation of this facility
     public String toString() {
