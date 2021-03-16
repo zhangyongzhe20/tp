@@ -34,6 +34,13 @@ public class loadData {
         this.canteens = new ArrayList<>();
         this.libraries = new ArrayList<>();
         this.lectureTheaters = new ArrayList<>();
+        try {
+            this.load();
+        } catch (FileNotFoundException e) {
+            System.err.println("WARNING: did not find a file to initialize data from.");
+        } catch (FileIsEmptyException e) {
+            System.err.println("WARNING: file to initalize data from is empty.");
+        }
     }
 
     public void load() throws FileNotFoundException, FileIsEmptyException {
