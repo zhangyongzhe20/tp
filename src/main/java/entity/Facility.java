@@ -47,7 +47,11 @@ public abstract class Facility {
     }
 
     public enum facilityType {
+<<<<<<< HEAD
         LECTURETHEATER, CANTEEN, LIBRARY
+=======
+      LECTURETHEATER, CANTEEN, LIBRARY
+>>>>>>> 2c37affd549bf24ef630a412001ed632094ea376
     }
     public void strToFacilityType(String type) {
         if (type.equalsIgnoreCase("LECTURETHEATER")) {
