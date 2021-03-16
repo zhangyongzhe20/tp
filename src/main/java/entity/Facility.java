@@ -42,8 +42,8 @@ public abstract class Facility {
         return location;
     }
 
-    public void setLocation(String x, String y) {
-        this.location = new Location(Double.parseDouble(x),Double.parseDouble(y));
+    public void setLocation(String x, String y, String address) {
+        this.location = new Location(Double.parseDouble(x),Double.parseDouble(y), address);
     }
 
     public enum facilityType {

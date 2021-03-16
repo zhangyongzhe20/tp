@@ -3,12 +3,14 @@ package entity;
 public class Location {
     private double longitude;
     private double latitude;
+    private String address;
 
     // create and initialize a point with given
     // (latitude, longitude) specified in degrees
-    public Location(double latitude, double longitude) {
+    public Location(double latitude, double longitude, String address) {
         this.latitude  = latitude;
         this.longitude = longitude;
+        this.address = address;
     }
 
     // return distance between this location and that location
