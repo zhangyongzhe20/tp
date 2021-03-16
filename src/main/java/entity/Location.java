@@ -13,13 +13,6 @@ public class Location {
         this.address = address;
     }
 
-<<<<<<< HEAD
-=======
-    public String getAddress() {
-        return address;
-    }
->>>>>>> 2c37affd549bf24ef630a412001ed632094ea376
-
     // return distance between this location and that location
     // measured in statute miles
     public double distanceTo(Location that) {
