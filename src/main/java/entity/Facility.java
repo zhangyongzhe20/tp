@@ -5,12 +5,14 @@ public abstract class Facility {
     private String name;
     private facilityType type;
     private Location location;
+    private Location address;
 
-    public Facility(int facilityID, String name, Location location, facilityType type) {
+    public Facility(int facilityID, String name, Location location, Location address, facilityType type) {
         this.facilityID = facilityID;
         this.name = name;
         this.location = location;
         this.type = type;
+        this.address = address;
     }
 
     public Facility() {
@@ -37,10 +39,8 @@ public abstract class Facility {
         return type;
     }
 
-
-    public Location getLocation() {
-        return location;
-    }
+    public Location getLocation() {return location; }
+    public String getAddress() {return getLocation().getAddress(); }
 
     public void setLocation(String x, String y, String address) {
         this.location = new Location(Double.parseDouble(x),Double.parseDouble(y), address);

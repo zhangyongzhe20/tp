@@ -18,7 +18,8 @@ public class Map {
     public static void executeCommand(String input, Command c) throws InvalidCommandException, EmptyInputException {
         switch (c) {
         case LIST_ALL_LOCATIONS:
-            parser.getLocationsList(input);
+            String location = parser.getLocationsList(input);
+            Feature.listAllLocations(location);
             break;
         case SEARCH:
             parser.getFacilitySearch(input);
