@@ -1,5 +1,7 @@
 package seedu.duke;
 
+import entity.Location;
+
 public class Parser {
 
     public static String getFacilitySearch(String userInput) {
