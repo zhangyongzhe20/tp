@@ -10,9 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+//import control.SearchFacility;
+import control.loadData;
+
 public class Map {
+    private static loadData dataController = new loadData();
     private static Parser parser = new Parser();
     private static UI ui = new UI();
+//    private static SearchFacility searchFacility = new SearchFacility(dataController);
 
     public static void show_welcome_msg() {
         System.out.println("Welcome to NTU Map \n");
@@ -29,8 +34,9 @@ public class Map {
             parser.getLocationsList(input);
             break;
         case SEARCH:
-            parser.getFacilitySearch(input);
-            parser.getIdSearch(input);
+            String facility = parser.getFacilitySearch(input);
+            int id = parser.getIdSearch(input);
+//            searchFacility.query(facility, id);
             break;
         case SEARCH_IN:
             parser.getBuilding(input);
