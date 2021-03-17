@@ -6,15 +6,12 @@ public class Parser {
         int index = userInput.indexOf('/');
         String facility = userInput.substring(6,index);
         return facility;
-
-
     }
 
     public static int getIdSearch(String userInput) {
         int index = userInput.indexOf('/');
         int id = Integer.parseInt(userInput.substring(index));
         return id;
-
     }
 
     public static String getFindFacilityLocation(String userInput) {
