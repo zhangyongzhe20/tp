@@ -10,14 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-//import control.SearchFacility;
+import control.SearchFacility;
 import control.loadData;
 
 public class Map {
     private static loadData dataController = new loadData();
     private static Parser parser = new Parser();
     private static UI ui = new UI();
-//    private static SearchFacility searchFacility = new SearchFacility(dataController);
+    private static SearchFacility searchFacility = new SearchFacility(dataController);
+
+    public static loadData getDataController() {
+        return dataController;
+    }
 
     public static void show_welcome_msg() {
         System.out.println("Welcome to NTU Map \n");
@@ -37,7 +41,7 @@ public class Map {
         case SEARCH:
             String facility = parser.getFacilitySearch(input);
             int id = parser.getIdSearch(input);
-//            searchFacility.query(facility, id);
+            searchFacility.query(facility, id);
             break;
         case SEARCH_IN:
             parser.getBuilding(input);
@@ -88,24 +92,21 @@ public class Map {
         }
     }
 
-    private static Facility findFacilityByName(loadData ld, String facilityLocation) throws InvalidCommandException {
+    public static Facility findFacilityByName(loadData ld, String facilityLocation) throws InvalidCommandException {
         for (Facility f: ld.getLibraries()) {
             if (f.getName().equals(facilityLocation)) {
-                break;
+                return f;
             }
-            return f;
         }
         for (Facility f: ld.getCanteens()) {
             if (f.getName().equals(facilityLocation)) {
-                break;
+                return f;
             }
-            return f;
         }
-        for (Facility f: ld.getLibraries()) {
+        for (Facility f: ld.getLectureTheaters()) {
             if (f.getName().equals(facilityLocation)) {
-                break;
+                return f;
             }
-            return f;
         }
         throw new InvalidCommandException();
     }
