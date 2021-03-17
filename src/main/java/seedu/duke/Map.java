@@ -19,6 +19,10 @@ public class Map {
     private static UI ui = new UI();
 //    private static SearchFacility searchFacility = new SearchFacility(dataController);
 
+    public static loadData getDataController() {
+        return dataController;
+    }
+
     public static void show_welcome_msg() {
         System.out.println("Welcome to NTU Map \n");
         System.out.println("What would you like to do?");
@@ -88,24 +92,21 @@ public class Map {
         }
     }
 
-    private static Facility findFacilityByName(loadData ld, String facilityLocation) throws InvalidCommandException {
+    public static Facility findFacilityByName(loadData ld, String facilityLocation) throws InvalidCommandException {
         for (Facility f: ld.getLibraries()) {
             if (f.getName().equals(facilityLocation)) {
-                break;
+                return f;
             }
-            return f;
         }
         for (Facility f: ld.getCanteens()) {
             if (f.getName().equals(facilityLocation)) {
-                break;
+                return f;
             }
-            return f;
         }
-        for (Facility f: ld.getLibraries()) {
+        for (Facility f: ld.getLectureTheaters()) {
             if (f.getName().equals(facilityLocation)) {
-                break;
+                return f;
             }
-            return f;
         }
         throw new InvalidCommandException();
     }
