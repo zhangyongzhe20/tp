@@ -137,8 +137,6 @@ public class Map {
                 System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
             } catch (EmptyInputException e) {
                 System.out.println("OOPS!!! The description of a new task cannot be empty.");
-            } catch (StringIndexOutOfBoundsException e) {
-                System.out.println("OOPS!!! You need to add time for new Event or Deadline with '/at' or '/by'!!");
             }
             userInput = ui.getString(in);
 
