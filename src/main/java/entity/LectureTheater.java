@@ -8,4 +8,8 @@ public class LectureTheater extends Facility{
     public LectureTheater() {
 
     }
+
+    public LectureTheater(int facilityID, String name, Location location) {
+        super(facilityID, name, location, location, FacilityType.LECTURETHEATER);
+    }
 }

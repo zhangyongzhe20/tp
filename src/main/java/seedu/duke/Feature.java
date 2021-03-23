@@ -1,11 +1,8 @@
 package seedu.duke;
 
-import entity.*;
-import control.*;
-
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
+import control.*;
+import entity.*;
 
 public class Feature {
     public static void listAllLocations(String location) {
@@ -20,6 +17,7 @@ public class Feature {
             break;
         case "Lecture Theater":
         case "lecture theater":
+        case "Lecture theater":
             List<Facility> lectureTheaters = loadData.getLectureTheaters();
             for (int i=0; i<lectureTheaters.size(); i++) {
                 System.out.println(lectureTheaters.get(i).getName() + "@" + lectureTheaters.get(i).getAddress());

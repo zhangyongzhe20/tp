@@ -25,6 +25,12 @@ dependencies {
      * Mockito for mocking.
      */
     testImplementation group: 'org.mockito', name: 'mockito-core', version: mockitoVersion
+
+    /**
+     * Mockito for inline.
+     */
+    testImplementation group: 'org.mockito', name: 'mockito-inline', version: mockitoVersion
+
 }
 
 test {
@@ -56,4 +62,8 @@ checkstyle {
 
 run{
     standardInput = System.in
+}
+
+run {
+    enableAssertions = true
 }

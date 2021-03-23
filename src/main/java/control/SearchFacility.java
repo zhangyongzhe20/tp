@@ -48,13 +48,13 @@ public class SearchFacility {
         try {
             switch (facilityType.toLowerCase(Locale.ROOT)) {
             case "canteen":
-                facilityFound = this.findCanteen(facilityId, this.dataController.getCanteens());
+                facilityFound = this.findCanteen(facilityId, loadData.getCanteens());
                 break;
             case "library":
-                facilityFound = this.findLibrary(facilityId, this.dataController.getLibraries());
+                facilityFound = this.findLibrary(facilityId, loadData.getLibraries());
                 break;
             case "lecturetheater":
-                facilityFound = this.findLectureTheater(facilityId, this.dataController.getLectureTheaters());
+                facilityFound = this.findLectureTheater(facilityId, loadData.getLectureTheaters());
                 break;
             default:
                 throw new FacilityNotFoundException(String.format("Go die lah where got \"%s\" this kind of facility one"

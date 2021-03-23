@@ -8,4 +8,8 @@ public class Library extends Facility{
     public Library() {
 
     }
+
+    public Library(int facilityID, String name, Location location) {
+        super(facilityID, name, location, location, FacilityType.LIBRARY);
+    }
 }
