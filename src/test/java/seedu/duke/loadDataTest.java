@@ -1,11 +1,10 @@
 package seedu.duke;
-import control.FileIsEmptyException;
+import exceptions.FileIsEmptyException;
 import control.loadData;
 
 import entity.Canteen;
 import entity.Facility;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.api.io.TempDir;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -13,6 +12,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+//@@author zhangyongzhe20
 public class loadDataTest {
     @TempDir
     public static Path testFolder;
@@ -22,7 +23,7 @@ public class loadDataTest {
     @Test
     public void constructor_fileIsEmpty_exceptionThrown() throws Exception, FileIsEmptyException {
         loadData ld = new loadData();
-        //assertThrows(FileIsEmptyException.class, () -> ld.load());
+        assertThrows(FileIsEmptyException.class, () -> ld.load());
     }
 
     @Test

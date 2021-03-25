@@ -3,6 +3,7 @@ import entity.Canteen;
 import entity.Facility;
 import entity.LectureTheater;
 import entity.Library;
+import exceptions.FileIsEmptyException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+//@@author zhangyongzhe20
 public class loadData {
     List<Facility> canteens;
     List<Facility> libraries;
