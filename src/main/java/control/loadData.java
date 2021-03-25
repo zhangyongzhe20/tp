@@ -11,31 +11,39 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import static java.lang.System.err;
 
 //@@author zhangyongzhe20
 public class loadData {
-    List<Facility> canteens;
-    List<Facility> libraries;
+    static List<Facility> canteens;
+    static List<Facility> libraries;
 
-    public List<Facility> getCanteens() {
+    public static List<Facility> getCanteens() {
         return canteens;
     }
 
-    public List<Facility> getLibraries() {
+    public static List<Facility> getLibraries() {
         return libraries;
     }
 
-    public List<Facility> getLectureTheaters() {
+    public static List<Facility> getLectureTheaters() {
         return lectureTheaters;
     }
 
-    List<Facility> lectureTheaters;
+    static List<Facility> lectureTheaters;
     public static String[] files = {"canteens.txt", "libraries.txt", "lectureTheaters.txt"};
 
     public loadData() {
         this.canteens = new ArrayList<>();
         this.libraries = new ArrayList<>();
         this.lectureTheaters = new ArrayList<>();
+        try {
+            this.load();
+        } catch (FileNotFoundException e) {
+            System.err.println("WARNING: did not find a file to initialize data from.");
+        } catch (FileIsEmptyException e) {
+            System.err.println("WARNING: file to initalize data from is empty.");
+        }
     }
 
     public void load() throws FileNotFoundException, FileIsEmptyException {
@@ -69,7 +77,7 @@ public class loadData {
                             facility = new LectureTheater();
                             break;
                         default:
-                            System.err.println("File can not be loaded");
+                            err.println("File can not be loaded");
                             System.exit(0);
                     }
                     facility.setFacilityID(temp[0]);
@@ -87,7 +95,7 @@ public class loadData {
                             lectureTheaters.add(facility);
                             break;
                         default:
-                            System.err.println("Data can not be collected");
+                            err.println("Data can not be collected");
                             System.exit(0);
                     }
                 }

@@ -4,17 +4,14 @@ public class Parser {
 
     public static String getFacilitySearch(String userInput) {
         int index = userInput.indexOf('/');
-        String facility = userInput.substring(6,index);
+        String facility = userInput.substring(7,index);
         return facility;
-
-
     }
 
     public static int getIdSearch(String userInput) {
         int index = userInput.indexOf('/');
-        int id = Integer.parseInt(userInput.substring(index));
+        int id = Integer.parseInt(userInput.substring(index + 1));
         return id;
-
     }
 
     public static String getFindFacilityLocation(String userInput) {

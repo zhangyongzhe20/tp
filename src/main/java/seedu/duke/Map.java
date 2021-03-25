@@ -1,10 +1,21 @@
 package seedu.duke;
 
+import control.*;
+import entity.Location;
+
 import java.util.Scanner;
 
+import control.loadData;
+
 public class Map {
+    private static loadData dataController = new loadData();
     private static Parser parser = new Parser();
     private static UI ui = new UI();
+    private static SearchFacility searchFacility = new SearchFacility(dataController);
+
+    public static loadData getDataController() {
+        return dataController;
+    }
 
     public static void show_welcome_msg() {
         System.out.println("Welcome to NTU Map \n");
@@ -18,19 +29,23 @@ public class Map {
     public static void executeCommand(String input, Command c) throws InvalidCommandException, EmptyInputException {
         switch (c) {
         case LIST_ALL_LOCATIONS:
-            parser.getLocationsList(input);
+            String location = parser.getLocationsList(input);
+            Feature.listAllLocations(location);
             break;
         case SEARCH:
-            parser.getFacilitySearch(input);
-            parser.getIdSearch(input);
+            String facility = parser.getFacilitySearch(input);
+            int id = parser.getIdSearch(input);
+            searchFacility.query(facility, id);
             break;
         case SEARCH_IN:
             parser.getBuilding(input);
             break;
         case FIND_FACILITY:
-            parser.getFindFacilityLocation(input);
-            parser.getFindFacilityType(input);
-            parser.getTopK(input);
+            String facilityLocation = parser.getFindFacilityLocation(input);
+            Location currentLocation = findNearest.findFacilityByName(dataController, facilityLocation).getLocation();
+            String facilityType = parser.getFindFacilityType(input);
+            int topK = parser.getTopK(input);
+            new findNearest(dataController).findTopKFacility(currentLocation, facilityType, topK);
             break;
         case INVALID:
             throw new InvalidCommandException();
@@ -45,7 +60,6 @@ public class Map {
         Command command;
         Scanner in = new Scanner(System.in);
         String userInput = ui.getString(in);
-
 
         while (!parser.isBye(userInput)) {
             if (parser.isList(userInput)) {
