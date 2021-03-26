@@ -8,4 +8,8 @@ public class Canteen extends Facility{
     public Canteen() {
         super();
     }
+
+    public Canteen(int facilityID, String name, Location location){
+        super(facilityID, name, location, location, FacilityType.CANTEEN);
+    }
 }
