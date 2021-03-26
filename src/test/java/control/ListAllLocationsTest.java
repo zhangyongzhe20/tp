@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import seedu.duke.Feature;
 import seedu.duke.Parser;
 
+//@@cswbibibi
 public class ListAllLocationsTest {
     @Test
     void listAllCanteenLocations() {
