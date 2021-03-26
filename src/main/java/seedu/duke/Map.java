@@ -6,7 +6,7 @@ import entity.Location;
 import java.util.Scanner;
 
 import control.loadData;
-
+//@@chenling
 public class Map {
     private static loadData dataController = new loadData();
     private static Parser parser = new Parser();
@@ -56,6 +56,7 @@ public class Map {
     }
 
     public static void main(String[] args) {
+        assert false : "dummy assertion set to fail";
         show_welcome_msg();
         Command command;
         Scanner in = new Scanner(System.in);
@@ -82,8 +83,6 @@ public class Map {
                 System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
             } catch (EmptyInputException e) {
                 System.out.println("OOPS!!! The description of a new task cannot be empty.");
-            } catch (StringIndexOutOfBoundsException e) {
-                System.out.println("OOPS!!! You need to add time for new Event or Deadline with '/at' or '/by'!!");
             }
             userInput = ui.getString(in);
 
