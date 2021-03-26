@@ -54,6 +54,13 @@ To know all the available libraries  in the school.
 
 {Give non-functional requirements}
 
+
+
+## Class diagram for v2.0
+
+[Class Diagram1.svg.zip](https://github.com/AY2021S2-CS2113-T10-2/tp/files/6208717/Class.Diagram1.svg.zip)
+
+
 ## Glossary
 
 * *glossary item* - Definition
