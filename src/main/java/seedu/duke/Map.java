@@ -6,8 +6,6 @@ import entity.Location;
 import java.util.Scanner;
 
 import control.loadData;
-import exceptions.InvalidCommandException;
-
 //@@chenling
 public class Map {
     private static loadData dataController = new loadData();
@@ -21,41 +19,34 @@ public class Map {
 
     public static void show_welcome_msg() {
         System.out.println("Welcome to NTU Map \n");
-    }
-
-    public static void promptInput() {
         System.out.println("What would you like to do?");
     }
 
-    public static void showExitMsg() {
+    public static void show_exit_msg() {
         System.out.println("Bye. Hope to see you again soon!\n");
     }
 
-    public static void executeCommand(String input, Command c) throws InvalidCommandException {
+    public static void executeCommand(String input, Command c) throws InvalidCommandException, EmptyInputException {
         switch (c) {
-        case LIST_ALL_LOCATIONS: {
-            String facilityType = parser.getFacilityType(input);
-            Feature.listAllLocations(facilityType);
+        case LIST_ALL_LOCATIONS:
+            String location = parser.getLocationsList(input);
+            Feature.listAllLocations(location);
             break;
-        }
-        case SEARCH: {
+        case SEARCH:
             String facility = parser.getFacilitySearch(input);
             int id = parser.getIdSearch(input);
             searchFacility.query(facility, id);
             break;
-        }
-        case SEARCH_IN: {
+        case SEARCH_IN:
             parser.getBuilding(input);
             break;
-        }
-        case FIND_FACILITY: {
+        case FIND_FACILITY:
             String facilityLocation = parser.getFindFacilityLocation(input);
             Location currentLocation = findNearest.findFacilityByName(dataController, facilityLocation).getLocation();
             String facilityType = parser.getFindFacilityType(input);
             int topK = parser.getTopK(input);
             new findNearest(dataController).findTopKFacility(currentLocation, facilityType, topK);
             break;
-        }
         case INVALID:
             throw new InvalidCommandException();
         default:
@@ -65,10 +56,10 @@ public class Map {
     }
 
     public static void main(String[] args) {
+        assert false : "dummy assertion set to fail";
         show_welcome_msg();
         Command command;
         Scanner in = new Scanner(System.in);
-        promptInput();
         String userInput = ui.getString(in);
 
         while (!parser.isBye(userInput)) {
@@ -89,17 +80,14 @@ public class Map {
             try {
                 executeCommand(userInput, command);
             } catch (InvalidCommandException e) {
-                System.err.println(e.getMessage());
-//                if (e.getMessage() != null) {
-//                    System.err.println(e.getMessage());
-//                } else {
-//                    System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
-//                }
+                System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
+            } catch (EmptyInputException e) {
+                System.out.println("OOPS!!! The description of a new task cannot be empty.");
             }
-            promptInput();
             userInput = ui.getString(in);
+
         }
-        showExitMsg();
+
     }
 
 }
