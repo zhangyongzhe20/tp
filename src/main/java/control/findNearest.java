@@ -3,8 +3,6 @@ package control;
 import entity.Facility;
 import entity.Location;
 import exceptions.FacilityNotFoundException;
-import seedu.duke.InvalidCommandException;
-import seedu.duke.Map;
 
 import java.util.ArrayList;
 import java.util.List;

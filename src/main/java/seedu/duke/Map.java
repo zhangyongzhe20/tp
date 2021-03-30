@@ -6,7 +6,10 @@ import control.FindInBuilding;
 import control.SearchFacility;
 import control.findNearest;
 import control.loadData;
+import entity.Location;
+import exceptions.BuildingNotFoundException;
 import exceptions.FacilityNotFoundException;
+import exceptions.InvalidCommandException;
 
 //@@chenling
 public class Map {
