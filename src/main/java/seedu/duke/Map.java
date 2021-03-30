@@ -6,9 +6,7 @@ import control.FindInBuilding;
 import control.SearchFacility;
 import control.findNearest;
 import control.loadData;
-import entity.Location;
-import exceptions.BuildingNotFoundException;
-import exceptions.InvalidCommandException;
+import exceptions.FacilityNotFoundException;
 
 //@@chenling
 public class Map {
@@ -31,7 +29,7 @@ public class Map {
         System.out.println("Bye. Hope to see you again soon!\n");
     }
 
-    public static void executeCommand(String input, Command c) throws InvalidCommandException, EmptyInputException {
+    public static void executeCommand(String input, Command c) throws InvalidCommandException, EmptyInputException, FacilityNotFoundException {
         switch (c) {
         case LIST_ALL_LOCATIONS:
             String location = parser.getLocationsList(input);
@@ -92,6 +90,10 @@ public class Map {
                 System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
             } catch (EmptyInputException e) {
                 System.out.println("OOPS!!! The description of a new task cannot be empty.");
+            } catch (FacilityNotFoundException e) {
+                System.out.println(e.getMessage());
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println(e.getMessage());
             }
             userInput = ui.getString(in);
 

@@ -57,8 +57,11 @@ To know all the available libraries  in the school.
 
 
 ## Class diagram for v2.0
+![Class Diagram](assets/ClassDiagram.svg)
 
-[Class Diagram1.svg.zip](https://github.com/AY2021S2-CS2113-T10-2/tp/files/6208717/Class.Diagram1.svg.zip)
+## Sequence digram for v2.0
+### Sequence digram for listAllLocations
+![Sequence Digram of listAllLocations](https://github.com/AY2021S2-CS2113-T10-2/tp/blob/master/docs/assets/Sequence%20Digram.JPG)
 
 
 ## Glossary
