@@ -2,6 +2,8 @@ package seedu.duke;
 
 import control.findNearest;
 import control.loadData;
+import exceptions.InvalidCommandException;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

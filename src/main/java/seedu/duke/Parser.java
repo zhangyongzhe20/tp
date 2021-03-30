@@ -1,5 +1,7 @@
 package seedu.duke;
 
+import java.util.Locale;
+
 //@@chenling
 public class Parser {
 
@@ -13,6 +15,10 @@ public class Parser {
         int index = userInput.indexOf('/');
         int id = Integer.parseInt(userInput.substring(index + 1));
         return id;
+    }
+
+    public static String getBuildingName(String userInput) {
+        return userInput.substring(9).strip();
     }
 
     public static String getFindFacilityLocation(String userInput) {
@@ -66,18 +72,14 @@ public class Parser {
 
     public static boolean isSearch(String userInput) {
         if (userInput.length() > 6) {
-            if (userInput.substring(0, 6).equals("search")) {
-                return true;
-            }
+            return userInput.startsWith("search");
         }
         return false;
     }
 
     public static boolean isSearchIn(String userInput) {
         if (userInput.length() > 9) {
-            if (userInput.substring(0, 6).equals("search in")) {
-                return true;
-            }
+            return userInput.startsWith("search in");
         }
         return false;
     }

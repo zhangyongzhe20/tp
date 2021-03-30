@@ -1,12 +1,11 @@
 package control;
 
-import entity.Facility;
-import entity.Location;
-import seedu.duke.InvalidCommandException;
-import seedu.duke.Map;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import entity.Facility;
+import entity.Location;
+import exceptions.InvalidCommandException;
 
 public class findNearest {
     static loadData dataController;
