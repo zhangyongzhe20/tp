@@ -1,9 +1,11 @@
 package seedu.duke;
 
+import control.findNearest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//@author geezzzyyy
 class ParserTest {
 
     @Test
@@ -13,6 +15,7 @@ class ParserTest {
         String expectedOutput = "library1";
         assertEquals(expectedOutput, parser.getFindFacilityLocation(userInput));
     }
+
 
     @Test
     void getFindFacilityType() {
