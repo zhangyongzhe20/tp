@@ -1,17 +1,19 @@
 package control;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.io.ByteArrayOutputStream;
+import java.io.FileDescriptor;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
+
+import org.junit.jupiter.api.Test;
+
 import entity.Canteen;
-import entity.Facility;
 import entity.Location;
 import exceptions.FacilityNotFoundException;
-import org.junit.jupiter.api.Test;
-import seedu.duke.InvalidCommandException;
 import seedu.duke.Map;
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 //@author geezzzyyy
 class findNearestTest {
 
@@ -98,7 +100,7 @@ class findNearestTest {
         canteen.setFacilityID("2");
         canteen.setName("library1");
         canteen.strToFacilityType("LIBRARY");
-        canteen.setLocation("15.5", "16.6", "N1-02-02");
+        canteen.setLocation("15.5", "16.6", "N1-02-02", "lol");
         return canteen.getLocation();
     }
 

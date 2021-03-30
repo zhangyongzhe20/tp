@@ -1,17 +1,17 @@
 package seedu.duke;
 
-import control.findNearest;
-import control.loadData;
-import entity.Location;
-import exceptions.FacilityNotFoundException;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileDescriptor;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+import exceptions.FacilityNotFoundException;
+import exceptions.InvalidCommandException;
 
 //@author geezzzyyy
 class MapTest {

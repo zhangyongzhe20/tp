@@ -1,12 +1,15 @@
 package seedu.duke;
 
-import control.*;
-import entity.Location;
-
 import java.util.Scanner;
 
+import control.FindInBuilding;
+import control.SearchFacility;
+import control.findNearest;
 import control.loadData;
+import entity.Location;
+import exceptions.BuildingNotFoundException;
 import exceptions.FacilityNotFoundException;
+import exceptions.InvalidCommandException;
 
 //@@chenling
 public class Map {
@@ -14,6 +17,7 @@ public class Map {
     private static Parser parser = new Parser();
     private static UI ui = new UI();
     private static SearchFacility searchFacility = new SearchFacility(dataController);
+    private static FindInBuilding findInBuilding = new FindInBuilding(dataController);
 
     public static loadData getDataController() {
         return dataController;
@@ -40,7 +44,12 @@ public class Map {
             searchFacility.query(facility, id);
             break;
         case SEARCH_IN:
-            parser.getBuilding(input);
+            String buildingName = parser.getBuildingName(input);
+            try {
+                findInBuilding.findByBuildingName(buildingName);
+            } catch (BuildingNotFoundException e) {
+                System.err.println(e.getMessage());
+            }
             break;
         case FIND_FACILITY:
             String facilityLocation = parser.getFindFacilityLocation(input);
@@ -70,10 +79,10 @@ public class Map {
                 command = Command.FIND_FACILITY;
             } else if (parser.isList(userInput)) {
                 command = Command.LIST_ALL_LOCATIONS;
-            } else if (parser.isSearch(userInput)) {
-                command = Command.SEARCH;
             } else if (parser.isSearchIn(userInput)) {
                 command = Command.SEARCH_IN;
+            } else if (parser.isSearch(userInput)) {
+                command = Command.SEARCH;
             } else {
                 command = Command.INVALID;
             }
