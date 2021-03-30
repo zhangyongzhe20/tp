@@ -60,7 +60,7 @@ To know all the available libraries  in the school.
 ![Class Diagram](assets/ClassDiagram.svg)
 
 ## Sequence digram for v2.0
-
+![Class Diagram](assets/sequence_digram.jpg)
 
 ## Glossary
 
