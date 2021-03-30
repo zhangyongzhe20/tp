@@ -14,18 +14,18 @@ public class findNearest {
         this.dataController = dataController;
     }
 
-    public static Facility findFacilityByName(loadData ld, String facilityLocation) throws FacilityNotFoundException {
-        for (Facility f: ld.getLibraries()) {
+    public static Facility findFacilityByName(String facilityLocation) throws FacilityNotFoundException {
+        for (Facility f: loadData.getLibraries()) {
             if (f.getName().equals(facilityLocation)) {
                 return f;
             }
         }
-        for (Facility f: ld.getCanteens()) {
+        for (Facility f: loadData.getCanteens()) {
             if (f.getName().equals(facilityLocation)) {
                 return f;
             }
         }
-        for (Facility f: ld.getLectureTheaters()) {
+        for (Facility f: loadData.getLectureTheaters()) {
             if (f.getName().equals(facilityLocation)) {
                 return f;
             }

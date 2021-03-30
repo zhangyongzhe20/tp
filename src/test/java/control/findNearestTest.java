@@ -21,8 +21,8 @@ class findNearestTest {
     @Test
     void findFacilityByName_validLibrary() throws FacilityNotFoundException {
         Map map = new Map();
-        loadData ld = map.getDataController();
-        String outputFacility = findNearest.findFacilityByName(ld, "library1").getName();
+        findNearest findNearest = new findNearest(map.getDataController());
+        String outputFacility = findNearest.findFacilityByName("library1").getName();
         String expectedFacilityFound = "library1";
         assertEquals(expectedFacilityFound, outputFacility);
 
@@ -31,8 +31,8 @@ class findNearestTest {
     @Test
     void findFacilityByName_validCanteen() throws FacilityNotFoundException {
         Map map = new Map();
-        loadData ld = map.getDataController();
-        String outputFacility = findNearest.findFacilityByName(ld, "canteen1").getName();
+        findNearest findNearest = new findNearest(map.getDataController());
+        String outputFacility = findNearest.findFacilityByName("canteen1").getName();
         String expectedFacilityFound = "canteen1";
         assertEquals(expectedFacilityFound, outputFacility);
 
@@ -41,8 +41,8 @@ class findNearestTest {
     @Test
     void findFacilityByName_validLT() throws FacilityNotFoundException {
         Map map = new Map();
-        loadData ld = map.getDataController();
-        String outputFacility = findNearest.findFacilityByName(ld, "lectureTheater1").getName();
+        findNearest findNearest = new findNearest(map.getDataController());
+        String outputFacility = findNearest.findFacilityByName("lectureTheater1").getName();
         String expectedFacilityFound = "lectureTheater1";
         assertEquals(expectedFacilityFound, outputFacility);
 
@@ -50,9 +50,9 @@ class findNearestTest {
     @Test
     void findFacilityByName_invalidLT() {
         Map map = new Map();
-        loadData ld = map.getDataController();
+        findNearest findNearest = new findNearest(map.getDataController());
         assertThrows(FacilityNotFoundException.class, () -> {
-            findNearest.findFacilityByName(ld, "lectureTheater3");
+            findNearest.findFacilityByName( "lectureTheater3");
         });
 
     }
