@@ -44,10 +44,11 @@ public class Map {
             break;
         case FIND_FACILITY:
             String facilityLocation = parser.getFindFacilityLocation(input);
-            Location currentLocation = findNearest.findFacilityByName(dataController, facilityLocation).getLocation();
+            findNearest find = new findNearest(dataController);
+            Location currentLocation = find.findFacilityByName(facilityLocation).getLocation();
             String facilityType = parser.getFindFacilityType(input);
             int topK = parser.getTopK(input);
-            new findNearest(dataController).findTopKFacility(currentLocation, facilityType, topK);
+            find.findTopKFacility(currentLocation, facilityType, topK);
             break;
         case INVALID:
             throw new InvalidCommandException();
