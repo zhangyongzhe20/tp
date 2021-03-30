@@ -56,7 +56,6 @@ public class Map {
     }
 
     public static void main(String[] args) {
-        assert false : "dummy assertion set to fail";
         show_welcome_msg();
         Command command;
         Scanner in = new Scanner(System.in);

@@ -1,5 +1,5 @@
 package entity;
-
+//@@author zhangyongzhe20
 public abstract class Facility {
     private int facilityID;
     private String name;

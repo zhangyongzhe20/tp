@@ -1,5 +1,6 @@
 package entity;
 
+//@@author zhangyongzhe20
 public class Location {
     private double longitude;
     private double latitude;
