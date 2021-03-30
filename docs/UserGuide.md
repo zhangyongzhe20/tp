@@ -8,27 +8,38 @@
 
 {Give steps to get started quickly}
 
-1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `Duke` from [here](http://link.to/duke).
+1. Ensure that you have Java 11 or above installed in your Computer.
+1. Down the latest version of `Map.jar` from [here](http://link.to/Map).
+1. Copy the file to the folder you want to use as the home folder for your Map.
+1. Double-click the file to start the app. The GUI similar to the below screenshot should appear in a few seconds.
+1. Type the command in the command box and press Enter to execute it.\
+   Here are some example commands you can try:\
+   `listAllLocarions<canteen>`\
+   `search<library92>`
+1. Refer to the Features below for details of each command.
 
 ## Features 
 
-{Give detailed description of each feature}
+### **listAllLocations**
+List all locations for a specific facility.
 
-### Adding a todo: `todo`
-Adds a new item to the list of todo items.
+Format: `listAllLocarions<facility_type>`
 
-Format: `todo n/TODO_NAME d/DEADLINE`
-
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.  
+* The `facility_type` can be either canteen, library or lecture theater.
+* The `facility_type` are not case sensitive.  
 
 Example of usage: 
 
-`todo n/Write the rest of the User Guide d/next week`
+`listAllLocarions<Canteen>`\
+`listAllLocarions<library>`\
+`listAllLocarions<LECTURE THEATER>`
 
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
+### **search**
+Search a facility's location by the faciloty type and facility id.
 
+### **findFacility**
+Find the top K nearest facilities of a certai  type from a specific location.
+  
 ## FAQ
 
 **Q**: How do I transfer my data to another computer? 
@@ -38,5 +49,3 @@ Example of usage:
 ## Command Summary
 
 {Give a 'cheat sheet' of commands here}
-
-* Add todo `todo n/TODO_NAME d/DEADLINE`
