@@ -3,7 +3,7 @@
 ## Design & implementation
 
 ### Class diagram for v2.0
-![Class Diagram](https://github.com/AY2021S2-CS2113-T10-2/tp/blob/master/docs/assets/classdiagram.svg)
+![Class Diagram](assets/classdiagram.svg)
 
 ### Sequence digram for v2.0
 ### Sequence digram for listAllLocations
