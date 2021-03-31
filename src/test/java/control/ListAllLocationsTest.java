@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import seedu.duke.Feature;
 import seedu.duke.Parser;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -10,6 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 //@@cswbibibi
 public class ListAllLocationsTest {
+
+
     @Test
     void listAllCanteenLocations() {
         Parser parser = new Parser();

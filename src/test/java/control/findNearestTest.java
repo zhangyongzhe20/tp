@@ -1,17 +1,19 @@
 package control;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.io.ByteArrayOutputStream;
+import java.io.FileDescriptor;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
+
+import org.junit.jupiter.api.Test;
+
 import entity.Canteen;
-import entity.Facility;
 import entity.Location;
 import exceptions.FacilityNotFoundException;
-import org.junit.jupiter.api.Test;
-import seedu.duke.InvalidCommandException;
 import seedu.duke.Map;
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 //@author geezzzyyy
 class findNearestTest {
 
@@ -19,8 +21,8 @@ class findNearestTest {
     @Test
     void findFacilityByName_validLibrary() throws FacilityNotFoundException {
         Map map = new Map();
-        loadData ld = map.getDataController();
-        String outputFacility = findNearest.findFacilityByName(ld, "library1").getName();
+        findNearest findNearest = new findNearest(map.getDataController());
+        String outputFacility = findNearest.findFacilityByName("library1").getName();
         String expectedFacilityFound = "library1";
         assertEquals(expectedFacilityFound, outputFacility);
 
@@ -29,8 +31,8 @@ class findNearestTest {
     @Test
     void findFacilityByName_validCanteen() throws FacilityNotFoundException {
         Map map = new Map();
-        loadData ld = map.getDataController();
-        String outputFacility = findNearest.findFacilityByName(ld, "canteen1").getName();
+        findNearest findNearest = new findNearest(map.getDataController());
+        String outputFacility = findNearest.findFacilityByName("canteen1").getName();
         String expectedFacilityFound = "canteen1";
         assertEquals(expectedFacilityFound, outputFacility);
 
@@ -39,8 +41,8 @@ class findNearestTest {
     @Test
     void findFacilityByName_validLT() throws FacilityNotFoundException {
         Map map = new Map();
-        loadData ld = map.getDataController();
-        String outputFacility = findNearest.findFacilityByName(ld, "lectureTheater1").getName();
+        findNearest findNearest = new findNearest(map.getDataController());
+        String outputFacility = findNearest.findFacilityByName("lectureTheater1").getName();
         String expectedFacilityFound = "lectureTheater1";
         assertEquals(expectedFacilityFound, outputFacility);
 
@@ -48,9 +50,9 @@ class findNearestTest {
     @Test
     void findFacilityByName_invalidLT() {
         Map map = new Map();
-        loadData ld = map.getDataController();
+        findNearest findNearest = new findNearest(map.getDataController());
         assertThrows(FacilityNotFoundException.class, () -> {
-            findNearest.findFacilityByName(ld, "lectureTheater3");
+            findNearest.findFacilityByName( "lectureTheater3");
         });
 
     }
@@ -98,7 +100,7 @@ class findNearestTest {
         canteen.setFacilityID("2");
         canteen.setName("library1");
         canteen.strToFacilityType("LIBRARY");
-        canteen.setLocation("15.5", "16.6", "N1-02-02");
+        canteen.setLocation("15.5", "16.6", "N1-02-02", "lol");
         return canteen.getLocation();
     }
 

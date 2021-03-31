@@ -2,17 +2,32 @@
 
 ## Design & implementation
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+### Class diagram for v2.0
+![Class Diagram](assets/classdiagram.svg)
+
+We have 4 packages in total: Control, Entity, Seedu.Duke(boundary) and exception. 
+Control classes deal with the database of entity objects directly, return the wanted result after processing the database.  
+Entity classes include facilities that are available to be navigated to.
+Boundary classes take in user input and process the user input to pass to control class.
+Exception handles common exceptions such as invalid input exception etc to make sure the system runs smoothly.
+
+
+### Sequence digram for v2.0
+### Sequence digram for listAllLocations
+![Sequence Digram of listAllLocations](https://github.com/AY2021S2-CS2113-T10-2/tp/blob/master/docs/assets/Sequence%20Digram.JPG)
+### Sequence digram for findNearest
+![Sequence Digram of findNearest](https://github.com/AY2021S2-CS2113-T10-2/tp/blob/master/docs/assets/findNearest.png)
 
 
 ## Product scope
 ### Target user profile
+Students who wish to navigate to a certain place in campus.
 
-{Describe the target user profile}
 
 ### Value proposition
+- Help freshmen to be familiar with campus
+- Find lecture theatres/canteens/libraries
 
-{Describe the value proposition: what problem does it solve?}
 
 ## User Stories
 
@@ -55,13 +70,6 @@ To know all the available libraries  in the school.
 {Give non-functional requirements}
 
 
-
-## Class diagram for v2.0
-![Class Diagram](assets/ClassDiagram.svg)
-
-## Sequence digram for v2.0
-### Sequence digram for listAllLocations
-![Sequence Digram of listAllLocations](https://github.com/AY2021S2-CS2113-T10-2/tp/blob/master/docs/assets/Sequence%20Digram.JPG)
 
 
 ## Glossary

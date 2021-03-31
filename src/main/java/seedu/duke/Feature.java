@@ -6,6 +6,11 @@ import entity.Facility;
 import java.util.ArrayList;
 import java.util.List;
 
+import control.*;
+import entity.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 //@@cswbibibi
 public class Feature {
     public static <T> List<String> listAllLocations(String location) {
@@ -30,6 +35,8 @@ public class Feature {
                 System.out.println(lectureTheaters.get(i).getName() + "@" + lectureTheaters.get(i).getAddress());
                 list.add(lectureTheaters.get(i).getName() + "@" + lectureTheaters.get(i).getAddress());
             }
+
+
             break;
         case "Library":
         case "LIBRARY":

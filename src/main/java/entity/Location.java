@@ -5,13 +5,15 @@ public class Location {
     private double longitude;
     private double latitude;
     private String address;
+    private String building;
 
     // create and initialize a point with given
     // (latitude, longitude) specified in degrees
-    public Location(double latitude, double longitude, String address) {
+    public Location(double latitude, double longitude, String address, String building) {
         this.latitude  = latitude;
         this.longitude = longitude;
         this.address = address;
+        this.building = building;
     }
 
     // return distance between this location and that location
@@ -40,4 +42,8 @@ public class Location {
 
     public String getAddress() {
         return this.address; }
+
+    public String getBuilding() {
+        return this.building;
+    }
 }
