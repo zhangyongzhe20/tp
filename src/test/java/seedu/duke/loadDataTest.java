@@ -43,7 +43,7 @@ public class loadDataTest {
         canteen.setFacilityID("1");
         canteen.setName("canteen1");
         canteen.strToFacilityType("CANTEEN");
-        canteen.setLocation("5.5", "6.6", "N4-01-01");
+        canteen.setLocation("5.5", "6.6", "N4-01-01", "WorldTradeCenter");
         canteens.add(canteen);
         return canteens;
     }

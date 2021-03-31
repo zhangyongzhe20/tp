@@ -1,14 +1,22 @@
 package seedu.duke;
 
+import control.loadData;
+import entity.Facility;
+
+import java.util.ArrayList;
 import java.util.List;
+<<<<<<< HEAD
 import control.*;
 import entity.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+=======
+>>>>>>> 5443c082aa8a31397bbaef998f93e4e40872a9d4
 
 //@@cswbibibi
 public class Feature {
-    public static String listAllLocations(String location) {
+    public static <T> List<String> listAllLocations(String location) {
+        List<String> list = new ArrayList<>();
         switch (location) {
         case "Canteen":
         case "canteen":
@@ -17,6 +25,7 @@ public class Feature {
             List<Facility> canteens = ld.getCanteens();
             for (int i=0; i<canteens.size(); i++) {
                 System.out.println(canteens.get(i).getName() + "@" + canteens.get(i).getAddress());
+                list.add(canteens.get(i).getName() + "@" + canteens.get(i).getAddress());
             }
             break;
         case "Lecture Theater":
@@ -26,6 +35,7 @@ public class Feature {
             List<Facility> lectureTheaters = loadData.getLectureTheaters();
             for (int i=0; i<lectureTheaters.size(); i++) {
                 System.out.println(lectureTheaters.get(i).getName() + "@" + lectureTheaters.get(i).getAddress());
+                list.add(lectureTheaters.get(i).getName() + "@" + lectureTheaters.get(i).getAddress());
             }
 
 
@@ -36,12 +46,13 @@ public class Feature {
             List<Facility> libraries = loadData.getLibraries();
             for (int i=0; i<libraries.size(); i++) {
                 System.out.println(libraries.get(i).getName() + "@" + libraries.get(i).getAddress());
+                list.add(libraries.get(i).getName() + "@" + libraries.get(i).getAddress());
             }
             break;
         default:
             break;
         }
-        return location;
+        return list;
     }
 }
 
