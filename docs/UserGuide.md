@@ -26,7 +26,7 @@ List all locations for a specific facility.
 Format: `listAllLocarions<facility_type>`
 
 * The `facility_type` can be either canteen, library or lecture theater.
-* The `facility_type` are not case sensitive.  
+* The `facility_type` are not case sensitive, for example, canteen and Canteen meant the same thing. 
 
 Example of usage: 
 
@@ -35,17 +35,11 @@ Example of usage:
 `listAllLocarions<LECTURE THEATER>`
 
 ### **search**
-Search a facility's location by the faciloty type and facility id.
+Search a facility's location by the facility type and facility id.
+
+Format: 
 
 ### **findFacility**
-Find the top K nearest facilities of a certai  type from a specific location.
+Find the top K nearest facilities of a certai type from a specific location.
   
-## FAQ
-
-**Q**: How do I transfer my data to another computer? 
-
-**A**: {your answer here}
-
-## Command Summary
-
-{Give a 'cheat sheet' of commands here}
+Format: 
