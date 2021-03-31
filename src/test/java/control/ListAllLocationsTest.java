@@ -3,13 +3,11 @@ import org.junit.jupiter.api.Test;
 import seedu.duke.Feature;
 import seedu.duke.Parser;
 
-<<<<<<< HEAD
-=======
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
->>>>>>> 5443c082aa8a31397bbaef998f93e4e40872a9d4
 
 //@@cswbibibi
 public class ListAllLocationsTest {

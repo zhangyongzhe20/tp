@@ -5,13 +5,11 @@ import entity.Facility;
 
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
+
 import control.*;
 import entity.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-=======
->>>>>>> 5443c082aa8a31397bbaef998f93e4e40872a9d4
 
 //@@cswbibibi
 public class Feature {
