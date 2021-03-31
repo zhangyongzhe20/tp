@@ -2,11 +2,9 @@
 
 ## Introduction
 
-{Give a product intro}
+This product named Map provides a user-friendly navigation tool for students to find out about the locations of the facilities in campus. 
 
 ## Quick Start
-
-{Give steps to get started quickly}
 
 1. Ensure that you have Java 11 or above installed in your Computer.
 1. Down the latest version of `Map.jar` from [here](http://link.to/Map).
@@ -26,7 +24,7 @@ List all locations for a specific facility.
 Format: `listAllLocarions<facility_type>`
 
 * The `facility_type` can be either canteen, library or lecture theater.
-* The `facility_type` are not case sensitive, for example, canteen and Canteen meant the same thing. 
+* The `facility_type` are not case sensitive, for example, canteen and Canteen mean the same thing. 
 
 Example of usage: 
 
@@ -37,9 +35,31 @@ Example of usage:
 ### **search**
 Search a facility's location by the facility type and facility id.
 
-Format: 
+Format: `search in building_name`
+
+* The `building_name` can be any building in the campus, and all facilities and its respective id in the building will return to users.
+* The `building_name` is not case sensitive, for example, scse and SCSE mean the same thing.
+
+Examples of usage:
+`search in SCSE`
+Output: 
+`NorthSpine
+NorthSpine
+SouthSpine
+SCSE
+NorthSpine
+Here are the facilities in "SCSE":
+2 (library1 ) locates at  (15.5, 16.6, N1-02-02)`
 
 ### **findFacility**
 Find the top K nearest facilities of a certai type from a specific location.
   
-Format: 
+Format: `findFacility<location><facility_type><top k>`
+
+* The `location`, `facility_type` are not case sensitive.
+
+Examples of usage:
+`findFacility<library1><Canteen><2>`
+Output:
+`canteen1@N4-01-01
+canteen3@N5-04-01`
