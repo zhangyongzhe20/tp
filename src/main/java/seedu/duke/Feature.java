@@ -3,6 +3,8 @@ package seedu.duke;
 import java.util.List;
 import control.*;
 import entity.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 //@@cswbibibi
 public class Feature {
@@ -25,6 +27,8 @@ public class Feature {
             for (int i=0; i<lectureTheaters.size(); i++) {
                 System.out.println(lectureTheaters.get(i).getName() + "@" + lectureTheaters.get(i).getAddress());
             }
+
+
             break;
         case "Library":
         case "LIBRARY":
