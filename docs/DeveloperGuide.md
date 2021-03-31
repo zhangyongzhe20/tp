@@ -3,7 +3,7 @@
 ## Design & implementation
 
 ### Class diagram for v2.0
-![Class Diagram](assets/class diagram for v2.0.svg)
+![Class Diagram](assets/Class Diagram2.svg)
 
 ### Sequence digram for v2.0
 ### Sequence digram for listAllLocations
