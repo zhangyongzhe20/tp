@@ -13,6 +13,7 @@ This product named Map provides a user-friendly navigation tool for students to 
 1. Type the command in the command box and press Enter to execute it.\
    Here are some example commands you can try:\
    `listAllLocarions<canteen>`\
+   `search in SCSE`\
    `search<library92>`
 1. Refer to the Features below for details of each command.
 
@@ -41,7 +42,7 @@ Format: `search in building_name`
 * The `building_name` is not case sensitive, for example, scse and SCSE mean the same thing.
 
 Examples of usage:
-`search in SCSE`\
+`search in SCSE`
 
 Output: 
 `Here are the facilities in "SCSE":`\
@@ -55,7 +56,7 @@ Format: `findFacility<location><facility_type><top k>`
 * The `location`, `facility_type` are not case sensitive.
 
 Examples of usage:
-`findFacility<library1><Canteen><2>`\
+`findFacility<library1><Canteen><2>`
 
 Output:
 `canteen1@N4-01-01`\
