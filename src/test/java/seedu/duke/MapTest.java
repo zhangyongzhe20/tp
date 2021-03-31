@@ -11,6 +11,7 @@ import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
 
 import exceptions.FacilityNotFoundException;
+import exceptions.InvalidCommandException;
 
 //@author geezzzyyy
 class MapTest {
