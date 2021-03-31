@@ -2,7 +2,14 @@
 
 ## Design & implementation
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+### Class diagram for v2.0
+![Class Diagram](assets/class diagram for v2.0.svg)
+
+### Sequence digram for v2.0
+### Sequence digram for listAllLocations
+![Sequence Digram of listAllLocations](https://github.com/AY2021S2-CS2113-T10-2/tp/blob/master/docs/assets/Sequence%20Digram.JPG)
+### Sequence digram for findNearest
+![Sequence Digram of findNearest](https://github.com/AY2021S2-CS2113-T10-2/tp/blob/master/docs/assets/findNearest.png)
 
 
 ## Product scope
@@ -56,14 +63,6 @@ To know all the available libraries  in the school.
 
 
 
-## Class diagram for v2.0
-![Class Diagram](assets/ClassDiagram.svg)
-
-## Sequence digram for v2.0
-### Sequence digram for listAllLocations
-![Sequence Digram of listAllLocations](https://github.com/AY2021S2-CS2113-T10-2/tp/blob/master/docs/assets/Sequence%20Digram.JPG)
-### Sequence digram for findNearest
-![Sequence Digram of findNearest](https://github.com/AY2021S2-CS2113-T10-2/tp/blob/master/docs/assets/findNearest.png)
 
 ## Glossary
 
