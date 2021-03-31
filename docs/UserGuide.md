@@ -41,7 +41,8 @@ Format: `search in building_name`
 * The `building_name` is not case sensitive, for example, scse and SCSE mean the same thing.
 
 Examples of usage:
-`search in SCSE`
+`search in SCSE`\
+
 Output: 
 `Here are the facilities in "SCSE":`\
 `2 (library1 ) locates at  (15.5, 16.6, N1-02-02)`
@@ -54,7 +55,8 @@ Format: `findFacility<location><facility_type><top k>`
 * The `location`, `facility_type` are not case sensitive.
 
 Examples of usage:
-`findFacility<library1><Canteen><2>`
+`findFacility<library1><Canteen><2>`\
+
 Output:
 `canteen1@N4-01-01`\
 `canteen3@N5-04-01`
