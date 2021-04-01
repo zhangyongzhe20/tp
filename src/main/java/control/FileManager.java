@@ -14,7 +14,7 @@ import java.util.Scanner;
 import static java.lang.System.err;
 
 //@@author zhangyongzhe20
-public class loadData {
+public class FileManager {
     static List<Facility> canteens;
     static List<Facility> libraries;
     static List<Facility> lectureTheaters;
@@ -43,7 +43,7 @@ public class loadData {
     }
 
 
-    public loadData() {
+    public FileManager() {
         this.canteens = new ArrayList<>();
         this.libraries = new ArrayList<>();
         this.lectureTheaters = new ArrayList<>();

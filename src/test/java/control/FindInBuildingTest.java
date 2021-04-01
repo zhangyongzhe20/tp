@@ -20,21 +20,21 @@ class FindInBuildingTest {
 
     @Test
     void findByBuildingName_validBuildingOneFacility_returnsResults() {
-        try (MockedStatic<loadData> theMock = mockStatic(loadData.class)) {
+        try (MockedStatic<FileManager> theMock = mockStatic(FileManager.class)) {
             List<Facility> fakeLibraries = new ArrayList<>();
             fakeLibraries.add(new Library(69, "library69", new Location(6.9, 6.9,
                     "N4-01-01", "NorthSpine")));
-            theMock.when( loadData::getFacilities ).thenReturn( fakeLibraries );
+            theMock.when( FileManager::getFacilities ).thenReturn( fakeLibraries );
             assertDoesNotThrow(() -> moduleUnderTest.findByBuildingName("NorthSpine"));
         }
     }
     @Test
     void findByBuildingName_invalidBuilding_throwsException() {
-        try (MockedStatic<loadData> theMock = mockStatic(loadData.class)) {
+        try (MockedStatic<FileManager> theMock = mockStatic(FileManager.class)) {
             List<Facility> fakeLibraries = new ArrayList<>();
             fakeLibraries.add(new Library(69, "library69", new Location(6.9, 6.9,
                     "N4-01-01", "NorthSpine")));
-            theMock.when( loadData::getFacilities ).thenReturn( fakeLibraries );
+            theMock.when( FileManager::getFacilities ).thenReturn( fakeLibraries );
             assertThrows(BuildingNotFoundException.class, () -> moduleUnderTest.findByBuildingName("Atlantis"));
         }
     }

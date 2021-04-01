@@ -5,7 +5,7 @@ import java.util.Scanner;
 import control.FindInBuilding;
 import control.SearchFacility;
 import control.findNearest;
-import control.loadData;
+import control.FileManager;
 import entity.Location;
 import exceptions.BuildingNotFoundException;
 import exceptions.FacilityNotFoundException;
@@ -13,13 +13,13 @@ import exceptions.InvalidCommandException;
 
 //@@chenling
 public class Map {
-    private static loadData dataController = new loadData();
+    private static FileManager dataController = new FileManager();
     private static Parser parser = new Parser();
     private static UI ui = new UI();
     private static SearchFacility searchFacility = new SearchFacility(dataController);
     private static FindInBuilding findInBuilding = new FindInBuilding(dataController);
 
-    public static loadData getDataController() {
+    public static FileManager getDataController() {
         return dataController;
     }
 

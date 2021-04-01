@@ -8,8 +8,8 @@ import entity.Facility;
 import exceptions.BuildingNotFoundException;
 
 public class FindInBuilding {
-    private static loadData dataController;
-    public FindInBuilding(loadData dataController) {
+    private static FileManager dataController;
+    public FindInBuilding(FileManager dataController) {
         this.dataController = dataController;
     }
 
