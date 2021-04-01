@@ -14,11 +14,11 @@ Exception handles common exceptions such as invalid input exception etc to make 
 
 ### Sequence diagram for v2.0
 ### Sequence diagram for listAllLocations
-![Sequence Diagram of listAllLocations](https://github.com/AY2021S2-CS2113-T10-2/tp/blob/master/docs/assets/Sequence%20Digram.JPG)
+![Sequence Diagram of listAllLocations](assets/Sequence%20Digram.JPG)
 ### Sequence digram for findNearest
-![Sequence Diagram of findNearest](https://github.com/AY2021S2-CS2113-T10-2/tp/blob/master/docs/assets/findNearest.png)
+![Sequence Diagram of findNearest](assets/findNearest.png)
 ### Sequence diagram for loading facility data
-![Sequence Diagram of loading data](https://github.com/AY2021S2-CS2113-T10-2/tp/blob/master/docs/assets/loadData.png)
+![Sequence Diagram of loading data](loadData.png)
 
 ## Product scope
 ### Target user profile
