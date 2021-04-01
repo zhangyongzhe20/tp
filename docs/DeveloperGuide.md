@@ -18,7 +18,7 @@ Exception handles common exceptions such as invalid input exception etc to make 
 ### Sequence digram for findNearest
 ![Sequence Diagram of findNearest](assets/findNearest.png)
 ### Sequence diagram for loading facility data
-![Sequence Diagram of loading data](loadData.png)
+![Sequence Diagram of loading data](assets/loadData.png)
 
 ## Product scope
 ### Target user profile
