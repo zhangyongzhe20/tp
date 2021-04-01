@@ -1,15 +1,10 @@
 package seedu.duke;
 
-import control.loadData;
+import control.FileManager;
 import entity.Facility;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import control.*;
-import entity.*;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 //@@cswbibibi
 public class Feature {
@@ -19,7 +14,7 @@ public class Feature {
         case "Canteen":
         case "canteen":
         case "CANTEEN":
-            loadData ld = new loadData();
+            FileManager ld = new FileManager();
             List<Facility> canteens = ld.getCanteens();
             for (int i=0; i<canteens.size(); i++) {
                 System.out.println(canteens.get(i).getName() + "@" + canteens.get(i).getAddress());
@@ -30,7 +25,7 @@ public class Feature {
         case "lecture theater":
         case "Lecture theater":
         case "LECTURE THEATER":
-            List<Facility> lectureTheaters = loadData.getLectureTheaters();
+            List<Facility> lectureTheaters = FileManager.getLectureTheaters();
             for (int i=0; i<lectureTheaters.size(); i++) {
                 System.out.println(lectureTheaters.get(i).getName() + "@" + lectureTheaters.get(i).getAddress());
                 list.add(lectureTheaters.get(i).getName() + "@" + lectureTheaters.get(i).getAddress());
@@ -41,7 +36,7 @@ public class Feature {
         case "Library":
         case "LIBRARY":
         case "library":
-            List<Facility> libraries = loadData.getLibraries();
+            List<Facility> libraries = FileManager.getLibraries();
             for (int i=0; i<libraries.size(); i++) {
                 System.out.println(libraries.get(i).getName() + "@" + libraries.get(i).getAddress());
                 list.add(libraries.get(i).getName() + "@" + libraries.get(i).getAddress());

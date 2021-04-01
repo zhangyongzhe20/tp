@@ -12,12 +12,13 @@ Boundary classes take in user input and process the user input to pass to contro
 Exception handles common exceptions such as invalid input exception etc to make sure the system runs smoothly.
 
 
-### Sequence digram for v2.0
-### Sequence digram for listAllLocations
-![Sequence Digram of listAllLocations](https://github.com/AY2021S2-CS2113-T10-2/tp/blob/master/docs/assets/Sequence%20Digram.JPG)
+### Sequence diagram for v2.0
+### Sequence diagram for listAllLocations
+![Sequence Diagram of listAllLocations](https://github.com/AY2021S2-CS2113-T10-2/tp/blob/master/docs/assets/Sequence%20Digram.JPG)
 ### Sequence digram for findNearest
-![Sequence Digram of findNearest](https://github.com/AY2021S2-CS2113-T10-2/tp/blob/master/docs/assets/findNearest.png)
-
+![Sequence Diagram of findNearest](https://github.com/AY2021S2-CS2113-T10-2/tp/blob/master/docs/assets/findNearest.png)
+### Sequence diagram for loading facility data
+![Sequence Diagram of loading data](https://github.com/AY2021S2-CS2113-T10-2/tp/blob/master/docs/assets/loadData.png)
 
 ## Product scope
 ### Target user profile

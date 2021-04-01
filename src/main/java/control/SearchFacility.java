@@ -1,6 +1,5 @@
 package control;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Locale;
 
@@ -8,9 +7,9 @@ import entity.Facility;
 import exceptions.FacilityNotFoundException;
 
 public class SearchFacility {
-    loadData dataController;
+    FileManager dataController;
 
-    public SearchFacility(loadData dataController) {
+    public SearchFacility(FileManager dataController) {
         this.dataController = dataController;
     }
 
@@ -48,13 +47,13 @@ public class SearchFacility {
         try {
             switch (facilityType.toLowerCase(Locale.ROOT)) {
             case "canteen":
-                facilityFound = this.findCanteen(facilityId, loadData.getCanteens());
+                facilityFound = this.findCanteen(facilityId, FileManager.getCanteens());
                 break;
             case "library":
-                facilityFound = this.findLibrary(facilityId, loadData.getLibraries());
+                facilityFound = this.findLibrary(facilityId, FileManager.getLibraries());
                 break;
             case "lecturetheater":
-                facilityFound = this.findLectureTheater(facilityId, loadData.getLectureTheaters());
+                facilityFound = this.findLectureTheater(facilityId, FileManager.getLectureTheaters());
                 break;
             default:
                 throw new FacilityNotFoundException(String.format("Go die lah where got \"%s\" this kind of facility one"
