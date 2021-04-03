@@ -61,3 +61,10 @@ Examples of usage:
 Output:
 `canteen1@N4-01-01`\
 `canteen3@N5-04-01`
+
+
+## Manual Modification of Data
+
+> ℹ️ **Note:** The application might not behave as the way it is expected to if you modify the application data in an incorrect manner. 
+
+> ℹ️ **Note:** You can manually add or update the previous records by following the data format of existing records.
