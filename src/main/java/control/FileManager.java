@@ -5,13 +5,12 @@ import entity.LectureTheater;
 import entity.Library;
 import exceptions.FileIsEmptyException;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import static java.lang.System.err;
+import static java.lang.System.exit;
 
 //@@author zhangyongzhe20
 public class FileManager {
@@ -50,67 +49,85 @@ public class FileManager {
         try {
             this.load();
         } catch (FileNotFoundException e) {
-            System.err.println("WARNING: did not find a file to initialize data from.");
+            System.err.println(e.getMessage());
+            e.printStackTrace();
+            System.exit(3);
         } catch (FileIsEmptyException e) {
-            System.err.println("WARNING: file to initalize data from is empty.");
+            System.err.println(e.getMessage());
+            e.printStackTrace();
+            System.exit(3);
         }
     }
 
     public void load() throws FileNotFoundException, FileIsEmptyException {
         int numOfFiles = files.length;
         Facility facility = new Canteen();
-        for (int i = 0; i < numOfFiles; i++) {
-            File file = new File(files[i]);
-            if(file.length() == 0){
-                throw new FileIsEmptyException("This file is empty, please add some data");
-            }
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-                e.printStackTrace();
-            }
-            Scanner sc = new Scanner(file);
-            String data;
-            while (sc.hasNextLine()) {
-                data = sc.nextLine();
-                if (!data.isEmpty()) {
-                    String[] temp = data.split(",");
-                    switch (i) {
-                        case 0:
-                            facility = new Canteen();
-                            break;
-                        case 1:
-                            facility = new Library();
-                            break;
-                        case 2:
-                            facility = new LectureTheater();
-                            break;
-                        default:
-                            err.println("File can not be loaded");
-                            System.exit(0);
+
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream inputStream = null;
+        try {
+            for (int i = 0; i < numOfFiles; i++) {
+
+                inputStream = classLoader.getResourceAsStream(files[i]);
+                if(inputStream == null){
+                    throw new FileNotFoundException("No data file is found!");
+                }
+                if (inputStream.read() == -1) {
+                    throw new FileIsEmptyException("This file is empty, please add some data");
+                }
+                try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+                    String data;
+                    while ((data = br.readLine()) != null) {
+                        if (!data.isEmpty()) {
+                            String[] temp = data.split(",");
+                            switch (i) {
+                                case 0:
+                                    facility = new Canteen();
+                                    break;
+                                case 1:
+                                    facility = new Library();
+                                    break;
+                                case 2:
+                                    facility = new LectureTheater();
+                                    break;
+                                default:
+                                    err.println("File can not be loaded");
+                                    System.exit(0);
+                            }
+                            facility.setFacilityID(temp[0]);
+                            facility.setName(temp[1]);
+                            facility.strToFacilityType(temp[2]);
+                            facility.setLocation(temp[3], temp[4], temp[5], temp[6]);
+                            switch (i) {
+                                case 0:
+                                    canteens.add(facility);
+                                    break;
+                                case 1:
+                                    libraries.add(facility);
+                                    break;
+                                case 2:
+                                    lectureTheaters.add(facility);
+                                    break;
+                                default:
+                                    err.println("Data can not be collected");
+                                    System.exit(0);
+                            }
+                        }
                     }
-                    facility.setFacilityID(temp[0]);
-                    facility.setName(temp[1]);
-                    facility.strToFacilityType(temp[2]);
-                    facility.setLocation(temp[3], temp[4], temp[5], temp[6]);
-                    switch (i) {
-                        case 0:
-                            canteens.add(facility);
-                            break;
-                        case 1:
-                            libraries.add(facility);
-                            break;
-                        case 2:
-                            lectureTheaters.add(facility);
-                            break;
-                        default:
-                            err.println("Data can not be collected");
-                            System.exit(0);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (inputStream != null) {
+                        try {
+                            inputStream.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
-            sc.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
