@@ -81,4 +81,8 @@ To know all the available libraries  in the school.
 1. Test data parser
 * find the `loadDataTest` in path `tp/src/test/java/seedu/duke/loadDataTest.java`.
 * run dataLoadTest.
-* if the text file are not empty, the test will fail. 
+* if the text file are empty, the test will fail. 
+
+
+## Instructions for building jar
+run the `shadowJar` in `build.gradle` script. And the output jar will be stored in `build\libs`.
