@@ -1,8 +1,6 @@
 package control;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mockStatic;
-import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,23 +17,26 @@ import entity.Library;
 import entity.Location;
 
 class SearchFacilityTest {
-    static loadData fakeDataController;
+    static FileManager fakeDataController;
     SearchFacility moduleUnderTest;
 
     @BeforeAll
     public static void initializeDb() {
-        try (MockedStatic<loadData> theMock = mockStatic(loadData.class)) {
+        try (MockedStatic<FileManager> theMock = mockStatic(FileManager.class)) {
             List<Facility> fakeLibraries = new ArrayList<>();
-            fakeLibraries.add(new Library(69, "library69", new Location(6.9, 6.9, "N4-01-01")));
-            theMock.when( loadData::getLibraries ).thenReturn( fakeLibraries );
+            fakeLibraries.add(new Library(69, "library69", new Location(6.9, 6.9,
+                    "N4-01-01", "building69")));
+            theMock.when( FileManager::getLibraries ).thenReturn( fakeLibraries );
 
             List<Facility> fakeCanteens = new ArrayList<>();
-            fakeCanteens.add(new Canteen(66, "canteen66", new Location(6.9, 6.9, "N4-01-01")));
-            theMock.when( loadData::getCanteens ).thenReturn( fakeCanteens );
+            fakeCanteens.add(new Canteen(66, "canteen66", new Location(6.9, 6.9,
+                    "N4-01-01", "building69")));
+            theMock.when( FileManager::getCanteens ).thenReturn( fakeCanteens );
 
             List<Facility> fakeLectureTheaters = new ArrayList<>();
-            fakeLectureTheaters.add(new LectureTheater(88, "canteen88", new Location(6.9, 6.9, "N4-01-01")));
-            theMock.when( loadData::getLectureTheaters ).thenReturn( fakeLectureTheaters );
+            fakeLectureTheaters.add(new LectureTheater(88, "canteen88", new Location(6.9, 6.9,
+                    "N4-01-01", "building69")));
+            theMock.when( FileManager::getLectureTheaters ).thenReturn( fakeLectureTheaters );
         }
     }
 
@@ -46,10 +47,11 @@ class SearchFacilityTest {
 
     @Test
     public void query_library_69_returns_true() {
-        try (MockedStatic<loadData> theMock = mockStatic(loadData.class)) {
+        try (MockedStatic<FileManager> theMock = mockStatic(FileManager.class)) {
             List<Facility> fakeLibraries = new ArrayList<>();
-            fakeLibraries.add(new Library(69, "library69", new Location(6.9, 6.9, "N4-01-01")));
-            theMock.when( loadData::getLibraries ).thenReturn( fakeLibraries );
+            fakeLibraries.add(new Library(69, "library69", new Location(6.9, 6.9,
+                    "N4-01-01", "building69")));
+            theMock.when( FileManager::getLibraries ).thenReturn( fakeLibraries );
 
             boolean foundLibrary = moduleUnderTest.query("library", 69);
             assert (foundLibrary);
@@ -58,10 +60,11 @@ class SearchFacilityTest {
 
     @Test
     public void query_canteens_66_returns_true() {
-        try (MockedStatic<loadData> theMock = mockStatic(loadData.class)) {
+        try (MockedStatic<FileManager> theMock = mockStatic(FileManager.class)) {
             List<Facility> fakeCanteens = new ArrayList<>();
-            fakeCanteens.add(new Canteen(66, "canteen66", new Location(6.9, 6.9, "N4-01-01")));
-            theMock.when( loadData::getCanteens ).thenReturn( fakeCanteens );
+            fakeCanteens.add(new Canteen(66, "canteen66", new Location(6.9, 6.9,
+                    "N4-01-01", "building69")));
+            theMock.when( FileManager::getCanteens ).thenReturn( fakeCanteens );
 
             boolean foundLibrary = moduleUnderTest.query("canteen", 66);
             assert (foundLibrary);
@@ -70,10 +73,11 @@ class SearchFacilityTest {
 
     @Test
     public void query_lt_88_returns_true() {
-        try (MockedStatic<loadData> theMock = mockStatic(loadData.class)) {
+        try (MockedStatic<FileManager> theMock = mockStatic(FileManager.class)) {
             List<Facility> fakeLectureTheaters = new ArrayList<>();
-            fakeLectureTheaters.add(new LectureTheater(88, "lecturetheater88", new Location(6.9, 6.9, "N4-01-01")));
-            theMock.when( loadData::getLectureTheaters ).thenReturn( fakeLectureTheaters );
+            fakeLectureTheaters.add(new LectureTheater(88, "lecturetheater88", new Location(6.9,
+                    6.9, "N4-01-01", "building69")));
+            theMock.when( FileManager::getLectureTheaters ).thenReturn( fakeLectureTheaters );
 
             boolean foundLibrary = moduleUnderTest.query("lecturetheater", 88);
             assert (foundLibrary);
@@ -82,10 +86,11 @@ class SearchFacilityTest {
 
     @Test
     public void query_nonexistent_lt_returns_false() {
-        try (MockedStatic<loadData> theMock = mockStatic(loadData.class)) {
+        try (MockedStatic<FileManager> theMock = mockStatic(FileManager.class)) {
             List<Facility> fakeLectureTheaters = new ArrayList<>();
-            fakeLectureTheaters.add(new LectureTheater(88, "lecture88", new Location(6.9, 6.9, "N4-01-01")));
-            theMock.when( loadData::getLectureTheaters ).thenReturn( fakeLectureTheaters );
+            fakeLectureTheaters.add(new LectureTheater(88, "lecture88", new Location(6.9,
+                    6.9, "N4-01-01", "building69")));
+            theMock.when( FileManager::getLectureTheaters ).thenReturn( fakeLectureTheaters );
 
             boolean foundLibrary = moduleUnderTest.query("lecturetheater", 8888);
             assert (!foundLibrary);
@@ -94,10 +99,11 @@ class SearchFacilityTest {
 
     @Test
     public void query_nonexistent_canteen_returns_false() {
-        try (MockedStatic<loadData> theMock = mockStatic(loadData.class)) {
+        try (MockedStatic<FileManager> theMock = mockStatic(FileManager.class)) {
             List<Facility> fakeLibraries = new ArrayList<>();
-            fakeLibraries.add(new Library(69, "library69", new Location(6.9, 6.9, "N4-01-01")));
-            theMock.when( loadData::getLibraries ).thenReturn( fakeLibraries );
+            fakeLibraries.add(new Library(69, "library69", new Location(6.9,
+                    6.9, "N4-01-01", "building69")));
+            theMock.when( FileManager::getLibraries ).thenReturn( fakeLibraries );
 
             boolean foundLibrary = moduleUnderTest.query("library", 6969);
             assert (!foundLibrary);
@@ -106,10 +112,11 @@ class SearchFacilityTest {
 
     @Test
     public void query_nonexistent_library_returns_false() {
-        try (MockedStatic<loadData> theMock = mockStatic(loadData.class)) {
+        try (MockedStatic<FileManager> theMock = mockStatic(FileManager.class)) {
             List<Facility> fakeLectureTheaters = new ArrayList<>();
-            fakeLectureTheaters.add(new LectureTheater(88, "lecture88", new Location(6.9, 6.9, "N4-01-01")));
-            theMock.when( loadData::getLectureTheaters ).thenReturn( fakeLectureTheaters );
+            fakeLectureTheaters.add(new LectureTheater(88, "lecture88", new Location(6.9,
+                    6.9, "N4-01-01", "building69")));
+            theMock.when( FileManager::getLectureTheaters ).thenReturn( fakeLectureTheaters );
 
             boolean foundLibrary = moduleUnderTest.query("lecturetheater", 29126);
             assert (!foundLibrary);

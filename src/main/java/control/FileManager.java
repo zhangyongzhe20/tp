@@ -14,26 +14,35 @@ import java.util.Scanner;
 import static java.lang.System.err;
 
 //@@author zhangyongzhe20
-public class loadData {
+public class FileManager {
     static List<Facility> canteens;
     static List<Facility> libraries;
+    static List<Facility> lectureTheaters;
+
+    public static String[] files = {"canteens.txt", "libraries.txt", "lectureTheaters.txt"};
+
+    public static List<Facility> getFacilities() {
+        List<Facility> mergedFacilities = new ArrayList<>();
+        mergedFacilities.addAll(canteens);
+        mergedFacilities.addAll(libraries);
+        mergedFacilities.addAll(lectureTheaters);
+
+        return mergedFacilities;
+    }
 
     public static List<Facility> getCanteens() {
         return canteens;
     }
 
-    public static List<Facility> getLibraries() {
-        return libraries;
+    public static List<Facility> getLibraries() { return libraries;
     }
 
     public static List<Facility> getLectureTheaters() {
         return lectureTheaters;
     }
 
-    static List<Facility> lectureTheaters;
-    public static String[] files = {"canteens.txt", "libraries.txt", "lectureTheaters.txt"};
 
-    public loadData() {
+    public FileManager() {
         this.canteens = new ArrayList<>();
         this.libraries = new ArrayList<>();
         this.lectureTheaters = new ArrayList<>();
@@ -83,7 +92,7 @@ public class loadData {
                     facility.setFacilityID(temp[0]);
                     facility.setName(temp[1]);
                     facility.strToFacilityType(temp[2]);
-                    facility.setLocation(temp[3], temp[4], temp[5]);
+                    facility.setLocation(temp[3], temp[4], temp[5], temp[6]);
                     switch (i) {
                         case 0:
                             canteens.add(facility);

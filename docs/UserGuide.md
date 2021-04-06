@@ -2,11 +2,9 @@
 
 ## Introduction
 
-{Give a product intro}
+This product named Map provides a user-friendly navigation tool for students to find out about the locations of the facilities in campus. 
 
 ## Quick Start
-
-{Give steps to get started quickly}
 
 1. Ensure that you have Java 11 or above installed in your Computer.
 1. Down the latest version of `Map.jar` from [here](http://link.to/Map).
@@ -14,7 +12,8 @@
 1. Double-click the file to start the app. The GUI similar to the below screenshot should appear in a few seconds.
 1. Type the command in the command box and press Enter to execute it.\
    Here are some example commands you can try:\
-   `listAllLocarions<canteen>`\
+   `listAllLocations<canteen>`\
+   `search in SCSE`\
    `search<library92>`
 1. Refer to the Features below for details of each command.
 
@@ -23,29 +22,49 @@
 ### **listAllLocations**
 List all locations for a specific facility.
 
-Format: `listAllLocarions<facility_type>`
+Format: `listAllLocations<facility_type>`
 
 * The `facility_type` can be either canteen, library or lecture theater.
-* The `facility_type` are not case sensitive.  
+* The `facility_type` are not case sensitive, for example, canteen and Canteen mean the same thing. 
 
 Example of usage: 
 
-`listAllLocarions<Canteen>`\
-`listAllLocarions<library>`\
-`listAllLocarions<LECTURE THEATER>`
+`listAllLocations<Canteen>`\
+`listAllLocations<library>`\
+`listAllLocations<LECTURE THEATER>`
 
 ### **search**
-Search a facility's location by the faciloty type and facility id.
+Search a facility's location by the facility type and facility id.
+
+Format: `search in building_name`
+
+* The `building_name` can be any building in the campus, and all facilities and its respective id in the building will return to users.
+* The `building_name` is not case sensitive, for example, scse and SCSE mean the same thing.
+
+Examples of usage:
+`search in SCSE`
+
+Output: 
+`Here are the facilities in "SCSE":`\
+`2 (library1 ) locates at  (15.5, 16.6, N1-02-02)`
 
 ### **findFacility**
-Find the top K nearest facilities of a certai  type from a specific location.
+Find the top K nearest facilities of a certai type from a specific location.
   
-## FAQ
+Format: `findFacility<location><facility_type><top k>`
 
-**Q**: How do I transfer my data to another computer? 
+* The `location`, `facility_type` are not case sensitive.
 
-**A**: {your answer here}
+Examples of usage:
+`findFacility<library1><Canteen><2>`
 
-## Command Summary
+Output:
+`canteen1@N4-01-01`\
+`canteen3@N5-04-01`
 
-{Give a 'cheat sheet' of commands here}
+
+## Manual Modification of Data
+
+> ℹ️ **Note:** The application might not behave as the way it is expected to if you modify the application data in an incorrect manner. 
+
+> ℹ️ **Note:** You can manually add or update the previous records by following the data format of existing records.

@@ -1,6 +1,6 @@
 package seedu.duke;
 import exceptions.FileIsEmptyException;
-import control.loadData;
+import control.FileManager;
 
 import entity.Canteen;
 import entity.Facility;
@@ -21,14 +21,14 @@ public class loadDataTest {
 
     @Test
     public void constructor_fileIsEmpty_exceptionThrown() throws Exception, FileIsEmptyException {
-        loadData ld = new loadData();
+        FileManager ld = new FileManager();
         assertDoesNotThrow(() -> ld.load());
     }
 
 
     @Test
     public void load_validFormat() throws Exception, FileIsEmptyException {
-        loadData ld = new loadData();
+        FileManager ld = new FileManager();
         ld.load();
         List<Facility> actualAb = ld.getCanteens();
         List<Facility> expectedAb = getTestCanteen();
@@ -43,7 +43,7 @@ public class loadDataTest {
         canteen.setFacilityID("1");
         canteen.setName("canteen1");
         canteen.strToFacilityType("CANTEEN");
-        canteen.setLocation("5.5", "6.6", "N4-01-01");
+        canteen.setLocation("5.5", "6.6", "N4-01-01", "WorldTradeCenter");
         canteens.add(canteen);
         return canteens;
     }
