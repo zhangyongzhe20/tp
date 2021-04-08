@@ -65,6 +65,12 @@ Output:
 
 ## Manual Modification of Data
 
+> ℹ️ **Note:** The text files storing data are saved in Jar
+
 > ℹ️ **Note:** The application might not behave as the way it is expected to if you modify the application data in an incorrect manner. 
 
 > ℹ️ **Note:** You can manually add or update the previous records by following the data format of existing records.
+
+
+## Logging
+> ℹ️ **Note:** A `Map-0.log` file is created after running the application to log all the user's inputs and error handling messages. 
