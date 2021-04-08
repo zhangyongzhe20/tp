@@ -2,13 +2,15 @@ package control;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.logging.Logger;
 
 import entity.Facility;
 import exceptions.FacilityNotFoundException;
 
 public class SearchFacility {
     FileManager dataController;
-
+    //logger
+    private static final Logger LOGGER = Logger.getLogger(SearchFacility.class.getName() );
     public SearchFacility(FileManager dataController) {
         this.dataController = dataController;
     }
@@ -62,6 +64,8 @@ public class SearchFacility {
             System.out.println(facilityFound.getLocation());
             return true;
         } catch (FacilityNotFoundException e) {
+
+            LOGGER.warning(e.getMessage());
             System.err.println(e.getMessage());
             return false;
         }

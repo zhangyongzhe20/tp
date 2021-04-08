@@ -83,6 +83,10 @@ To know all the available libraries  in the school.
 * run dataLoadTest.
 * if the text file are empty, the test will fail. 
 
+## Instructions for logging
+### The following data are logged:
+1. User Inputs
+2. All error handling messages
 
 ## Instructions for building jar
 run the `shadowJar` in `build.gradle` script. And the output jar will be stored in `build\libs`.
