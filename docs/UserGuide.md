@@ -12,7 +12,7 @@ This product named Map provides a user-friendly navigation tool for students to 
 1. Double-click the file to start the app. The GUI similar to the below screenshot should appear in a few seconds.
 1. Type the command in the command box and press Enter to execute it.\
    Here are some example commands you can try:\
-   `listAllLocarions<canteen>`\
+   `listAllLocations<canteen>`\
    `search in SCSE`\
    `search<library92>`
 1. Refer to the Features below for details of each command.
@@ -22,16 +22,16 @@ This product named Map provides a user-friendly navigation tool for students to 
 ### **listAllLocations**
 List all locations for a specific facility.
 
-Format: `listAllLocarions<facility_type>`
+Format: `listAllLocations<facility_type>`
 
 * The `facility_type` can be either canteen, library or lecture theater.
 * The `facility_type` are not case sensitive, for example, canteen and Canteen mean the same thing. 
 
 Example of usage: 
 
-`listAllLocarions<Canteen>`\
-`listAllLocarions<library>`\
-`listAllLocarions<LECTURE THEATER>`
+`listAllLocations<Canteen>`\
+`listAllLocations<library>`\
+`listAllLocations<LECTURE THEATER>`
 
 ### **search**
 Search a facility's location by the facility type and facility id.

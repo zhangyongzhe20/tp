@@ -14,7 +14,7 @@ Exception handles common exceptions such as invalid input exception etc to make 
 
 ### Sequence diagram for v2.0
 ### Sequence diagram for listAllLocations
-![Sequence Diagram of listAllLocations](assets/Sequence%20Digram.JPG)
+![Sequence Diagram of listAllLocations](assets/Sequence%20Digram.jpg)
 ### Sequence digram for findNearest
 ![Sequence Diagram of findNearest](assets/findNearest.png)
 ### Sequence diagram for loading facility data

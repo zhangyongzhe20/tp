@@ -36,8 +36,7 @@ public class FileManager {
         return canteens;
     }
 
-    public static List<Facility> getLibraries() {
-        return libraries;
+    public static List<Facility> getLibraries() { return libraries;
     }
 
     public static List<Facility> getLectureTheaters() {
