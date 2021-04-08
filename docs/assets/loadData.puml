@@ -1,7 +1,11 @@
 @startuml
+
+hide circle
+
 actor       actor       as Foo1
-control     FileManager     as FM
-boundary    Facility    as Facility
+participant     ":FileManager"     as FM
+participant    ":Facility"    as Facility
+hide footbox
 Foo1 -> FM : FileManager()
 activate FM
 FM -> FM : load()

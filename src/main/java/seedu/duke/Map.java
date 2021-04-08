@@ -1,6 +1,10 @@
 package seedu.duke;
 
+import java.io.InputStream;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 import control.FindInBuilding;
 import control.SearchFacility;
@@ -21,6 +25,19 @@ public class Map {
 
     public static FileManager getDataController() {
         return dataController;
+    }
+    //logger
+    private static final Logger LOGGER = Logger.getLogger(Map.class.getName() );
+    /**
+     * Initialise logger configurations
+     */
+    static {
+        try {
+            InputStream inputStream = Map.class.getClassLoader().getResourceAsStream("logger.properties");
+            LogManager.getLogManager().readConfiguration(inputStream);
+        } catch (Exception e) {
+            LOGGER.log(Level.WARNING, "An error occur when trying to read logger configuration file.", e);
+        }
     }
 
     public static void show_welcome_msg() {
@@ -48,6 +65,7 @@ public class Map {
             try {
                 findInBuilding.findByBuildingName(buildingName);
             } catch (BuildingNotFoundException e) {
+                LOGGER.warning(e.getMessage());
                 System.err.println(e.getMessage());
             }
             break;
@@ -91,15 +109,24 @@ public class Map {
             try {
                 executeCommand(userInput, command);
             } catch (InvalidCommandException e) {
-                System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
+                String errMsg = "OOPS!!! I'm sorry, but I don't know what that means :-(";
+                System.out.println(errMsg);
+                LOGGER.warning(errMsg);
             } catch (EmptyInputException e) {
-                System.out.println("OOPS!!! The description of a new task cannot be empty.");
+                String errMsg = "OOPS!!! The description of a new task cannot be empty.";
+                System.out.println(errMsg);
+                LOGGER.warning(errMsg);
             } catch (FacilityNotFoundException e) {
+                LOGGER.warning(e.getMessage());
                 System.out.println(e.getMessage());
             } catch (ArrayIndexOutOfBoundsException e) {
+                LOGGER.warning(e.getMessage());
                 System.out.println(e.getMessage());
             }
+            //log user input
+            LOGGER.log(Level.INFO, String.format("User input: %s", userInput));
             userInput = ui.getString(in);
+
 
         }
 

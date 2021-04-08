@@ -9,6 +9,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
+
 import static java.lang.System.err;
 import static java.lang.System.exit;
 
@@ -17,7 +19,8 @@ public class FileManager {
     static List<Facility> canteens;
     static List<Facility> libraries;
     static List<Facility> lectureTheaters;
-
+    //logger
+    private static final Logger LOGGER = Logger.getLogger(FileManager.class.getName() );
     public static String[] files = {"canteens.txt", "libraries.txt", "lectureTheaters.txt"};
 
     public static List<Facility> getFacilities() {
@@ -48,10 +51,12 @@ public class FileManager {
         try {
             this.load();
         } catch (FileNotFoundException e) {
+            LOGGER.warning(e.getMessage());
             System.err.println(e.getMessage());
             e.printStackTrace();
             System.exit(3);
         } catch (FileIsEmptyException e) {
+            LOGGER.warning(e.getMessage());
             System.err.println(e.getMessage());
             e.printStackTrace();
             System.exit(3);
