@@ -14,6 +14,7 @@ import entity.Location;
 import exceptions.BuildingNotFoundException;
 import exceptions.FacilityNotFoundException;
 import exceptions.InvalidCommandException;
+import exceptions.InvalidSearchException;
 
 //@@chenling
 public class Map {
@@ -45,11 +46,15 @@ public class Map {
         System.out.println("What would you like to do?");
     }
 
+    public static void prompt_input() {
+        System.out.println("What else would you like to do?");
+    }
+
     public static void show_exit_msg() {
         System.out.println("Bye. Hope to see you again soon!\n");
     }
 
-    public static void executeCommand(String input, Command c) throws InvalidCommandException, EmptyInputException, FacilityNotFoundException {
+    public static void executeCommand(String input, Command c) throws InvalidCommandException, EmptyInputException, FacilityNotFoundException, InvalidSearchException, BuildingNotFoundException {
         switch (c) {
         case LIST_ALL_LOCATIONS:
             String location = parser.getLocationsList(input);
@@ -62,12 +67,7 @@ public class Map {
             break;
         case SEARCH_IN:
             String buildingName = parser.getBuildingName(input);
-            try {
-                findInBuilding.findByBuildingName(buildingName);
-            } catch (BuildingNotFoundException e) {
-                LOGGER.warning(e.getMessage());
-                System.err.println(e.getMessage());
-            }
+            findInBuilding.findByBuildingName(buildingName);
             break;
         case FIND_FACILITY:
             String facilityLocation = parser.getFindFacilityLocation(input);
@@ -96,8 +96,6 @@ public class Map {
                 command = Command.LIST_ALL_LOCATIONS;
             } else if (parser.isFind(userInput)) {
                 command = Command.FIND_FACILITY;
-            } else if (parser.isList(userInput)) {
-                command = Command.LIST_ALL_LOCATIONS;
             } else if (parser.isSearchIn(userInput)) {
                 command = Command.SEARCH_IN;
             } else if (parser.isSearch(userInput)) {
@@ -122,12 +120,17 @@ public class Map {
             } catch (ArrayIndexOutOfBoundsException e) {
                 LOGGER.warning(e.getMessage());
                 System.out.println(e.getMessage());
+            } catch (InvalidSearchException e) {
+                LOGGER.warning(e.getMessage());
+                System.out.println(e.getMessage());
+            } catch (BuildingNotFoundException e) {
+                LOGGER.warning(e.getMessage());
+                System.out.println(e.getMessage());
             }
             //log user input
             LOGGER.log(Level.INFO, String.format("User input: %s", userInput));
+            prompt_input();
             userInput = ui.getString(in);
-
-
         }
 
     }
