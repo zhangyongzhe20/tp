@@ -61,7 +61,6 @@ public class SearchFacility {
                 throw new FacilityNotFoundException(String.format("Go die lah where got \"%s\" this kind of facility one"
                         , facilityType));
             }
-            System.out.println(facilityFound.getLocation());
             return true;
         } catch (FacilityNotFoundException e) {
 

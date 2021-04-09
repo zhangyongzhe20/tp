@@ -18,7 +18,6 @@ public class FindInBuilding {
         List<Facility> searchResults = new ArrayList<>();
         for (Facility facility: dataController.getFacilities()){
             String currentFacilityBuildingName = facility.getLocation().getBuilding();
-            System.out.println(currentFacilityBuildingName);
             if (!currentFacilityBuildingName.toLowerCase(Locale.ROOT).equals(buildingName.toLowerCase(Locale.ROOT))) {
                 continue;
             }
