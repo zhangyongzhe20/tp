@@ -61,7 +61,7 @@ public abstract class Facility {
 
     // return string representation of this facility
     public String toString() {
-        return this.facilityID + " (" +  this.name + " )"  +
-                " locates at " + this.location.toString();
+        return this.facilityID + " (" +  this.name + ")"  +
+                " is located at " + this.location.toString();
     }
 }

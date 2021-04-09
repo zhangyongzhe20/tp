@@ -11,23 +11,25 @@ public class Parser {
         }
         int index = userInput.indexOf('/');
         if (index == -1) {
-            throw new InvalidSearchException("Invalid syntax for search!!! It must be: \"search facilityType/facilityId\"");
+            throw new InvalidSearchException(
+                    "Invalid syntax for search!!! It must be: \"search facilityType/facilityId\"");
         }
-        String facility = userInput.substring(7,index);
+        String facility = userInput.substring(7, index);
         return facility;
     }
 
     public static int getIdSearch(String userInput) throws InvalidSearchException {
         int index = userInput.indexOf('/');
         if (index == -1) {
-            throw new InvalidSearchException("Invalid syntax for search!!! It must be: \"search facilityType/facilityId\"");
+            throw new InvalidSearchException(
+                    "Invalid syntax for search!!! It must be: \"search facilityType/facilityId\"");
         }
         String searchIdString = userInput.substring(index + 1);
         try {
             return Integer.parseInt(searchIdString);
         } catch (NumberFormatException exception) {
-            throw new InvalidSearchException(String.format("facilityId provided to search must be an integer! " +
-                    "\"%s\" is not a valid integer.", searchIdString));
+            throw new InvalidSearchException(String.format("facilityId provided to search must be an integer! "
+                    + "\"%s\" is not a valid integer.", searchIdString));
         }
 
     }
@@ -39,7 +41,7 @@ public class Parser {
     public static String getFindFacilityLocation(String userInput) {
         int index1 = userInput.indexOf('<');
         int index2 = userInput.indexOf('>');
-        String location = userInput.substring(index1 + 1,index2);
+        String location = userInput.substring(index1 + 1, index2);
         return location;
     }
 
@@ -48,7 +50,7 @@ public class Parser {
         String substring = userInput.substring(index1 + 1);
         int index2 = substring.indexOf('<');
         int index3 = substring.indexOf('>');
-        String facilityType = substring.substring(index2 + 1,index3);
+        String facilityType = substring.substring(index2 + 1, index3);
         return facilityType;
     }
 
@@ -59,7 +61,7 @@ public class Parser {
         String substring2 = substring1.substring(index2 + 1);
         int index3 = substring2.indexOf('<');
         int index4 = substring2.indexOf('>');
-        String stringTopK = substring2.substring(index3 + 1,index4);
+        String stringTopK = substring2.substring(index3 + 1, index4);
         int topK = Integer.parseInt(stringTopK);
         return topK;
     }
@@ -67,20 +69,13 @@ public class Parser {
     public static String getLocationsList(String userInput) {
         int index1 = userInput.indexOf('<');
         int index2 = userInput.indexOf('>');
-        String location = userInput.substring(index1 + 1,index2);
+        String location = userInput.substring(index1 + 1, index2);
         return location;
     }
 
-    public static String getBuilding(String userInput) {
-        String buildingName = userInput.substring(10);
-        return buildingName;
-    }
-
     public static boolean isList(String userInput) {
-        if (userInput.length() > 16) {
-            if (userInput.substring(0, 16).equals("listAllLocations")) {
-                return true;
-            }
+        if (userInput.length() >= 16) {
+            return userInput.startsWith("listAllLocations");
         }
         return false;
     }
@@ -100,20 +95,14 @@ public class Parser {
     }
 
     public static boolean isFind(String userInput) {
-        if (userInput.length() > 12) {
-            if (userInput.substring(0, 12).equals("findFacility")) {
-                return true;
-            }
+        if (userInput.length() >= 12) {
+            return userInput.startsWith("findFacility");
         }
         return false;
     }
 
     public static boolean isBye(String userInput) {
-        if (userInput.equals("bye")) {
-            return true;
-        } else {
-            return false;
-        }
+        return userInput.equalsIgnoreCase("bye");
     }
 
 

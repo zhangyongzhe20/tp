@@ -2,29 +2,30 @@
 
 ## Introduction
 
-This product named Map provides a user-friendly navigation tool for students to find out about the locations of the facilities in campus. 
+Location Buddy provides a navigation tool for fast-typing students to locate facilities on campus.
+
+It currently supports three types of facilities, namely `Canteens`, `Lecture Theaters`, and
+`Libraries`.
 
 ## Quick Start
 
-1. Ensure that you have Java 11 or above installed in your Computer.
-1. Down the latest version of `Map.jar` from [here](http://link.to/Map).
-1. Copy the file to the folder you want to use as the home folder for your Map.
-1. Double-click the file to start the app. The GUI similar to the below screenshot should appear in a few seconds.
-1. Type the command in the command box and press Enter to execute it.\
-   Here are some example commands you can try:\
+1. Ensure that you have Java 11 or above installed in your computer.
+2. Download the `JAR` file from the latest release of `Location Buddy` [here](https://github.com/AY2021S2-CS2113-T10-2/tp/tags).
+3. On the command line, run `java -jar LocationBuddy.jar` in the current directory. 
+   (In case JAR file name changes, change the command accordingly)
+4. Here are some example commands you can try after startup:\
    `listAllLocations<canteen>`\
    `search in SCSE`\
-   `search<library92>`
-1. Refer to the Features below for details of each command.
+   `search library/2`
 
 ## Features 
 
-### **listAllLocations**
+### listAllLocations
 List all locations for a specific facility.
 
 Format: `listAllLocations<facility_type>`
 
-* The `facility_type` can be either canteen, library or lecture theater.
+* The `facility_type` can be either `canteen`, `library` or `lecture theater`.
 * The `facility_type` are not case sensitive, for example, canteen and Canteen mean the same thing. 
 
 Example of usage: 
@@ -33,44 +34,61 @@ Example of usage:
 `listAllLocations<library>`\
 `listAllLocations<LECTURE THEATER>`
 
-### **search**
+### search
 Search a facility's location by the facility type and facility id.
+
+Format: `search facilityType/id`
+
+* The `facilityType` is only either `canteen`, `library`, or `lectureTheater`
+* The `facilityType` is not case-sensitive, for example, lectureTheater and LECTURETHEATER 
+  mean the same thing.
+
+Examples of usage:
+`search lectureTheater/3`
+
+Output:
+`lectureTheater (3) is found at: NS3-05-43`
+
+### search in
+Search for all facilities found in a building. Currently, only building names 
+`NorthSpine`, `SouthSpine`, and `SCSE` are supported.
 
 Format: `search in building_name`
 
-* The `building_name` can be any building in the campus, and all facilities and its respective id in the building will return to users.
+* The `building_name` supported is only one of the following: `NorthSpine`, `SouthSpine`, `SCSE`.
 * The `building_name` is not case sensitive, for example, scse and SCSE mean the same thing.
 
 Examples of usage:
 `search in SCSE`
 
-Output: 
+Output:
 `Here are the facilities in "SCSE":`\
-`2 (library1 ) locates at  (15.5, 16.6, N1-02-02)`
+`2 (library1) is located at  (15.5, 16.6, N1-02-02)`
 
-### **findFacility**
-Find the top K nearest facilities of a certai type from a specific location.
+### findFacility
+Find the top K nearest facilities of a certain type. Distance is determined with respect to a specific facility.
   
-Format: `findFacility<location><facility_type><top k>`
+Format: `findFacility<facility><facility_type><top k>`
 
-* The `location`, `facility_type` are not case sensitive.
+* The `facility` and `facility_type` are not case-sensitive. \
+* `facility` can be found from the output of the `search in` command, or the
+* `facility_type` is only either `canteen`, `library`, or `lectureTheater`
+* `top k` must be an integer >= 1. It also cannot exceed the number of entries of that `facility_type`.
 
 Examples of usage:
 `findFacility<library1><Canteen><2>`
 
-Output:
+Output:\
 `canteen1@N4-01-01`\
 `canteen3@N5-04-01`
 
+### Exit Application
+Terminate the application gracefully. If you want to be a rebel, you can also either close the command prompt,
+or press Ctrl+D (KeyboardInterrupt) or whatever the equivalent is on Mac.
 
-## Manual Modification of Data
+Usage: `bye`
+Output: `Bye. Hope you don't have to use me again! Otherwise you need to orientate about your own school better.`
 
-> ℹ️ **Note:** The text files storing data are saved in Jar
-
-> ℹ️ **Note:** The application might not behave as the way it is expected to if you modify the application data in an incorrect manner. 
-
-> ℹ️ **Note:** You can manually add or update the previous records by following the data format of existing records.
-
-
-## Logging
-> ℹ️ **Note:** A `Map-0.log` file is created after running the application to log all the user's inputs and error handling messages. 
+### Logging
+> ℹ️ **Note:** A `Map-0.log` file is created after running the application to log all the user's inputs and error
+> handling messages. 
