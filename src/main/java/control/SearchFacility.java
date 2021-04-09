@@ -43,30 +43,23 @@ public class SearchFacility {
     }
 
 
-    public boolean query(String facilityType, int facilityId) {
+    public boolean query(String facilityType, int facilityId) throws FacilityNotFoundException {
 
         Facility facilityFound = null;
-        try {
-            switch (facilityType.toLowerCase(Locale.ROOT)) {
-            case "canteen":
-                facilityFound = this.findCanteen(facilityId, FileManager.getCanteens());
-                break;
-            case "library":
-                facilityFound = this.findLibrary(facilityId, FileManager.getLibraries());
-                break;
-            case "lecturetheater":
-                facilityFound = this.findLectureTheater(facilityId, FileManager.getLectureTheaters());
-                break;
-            default:
-                throw new FacilityNotFoundException(String.format("Go die lah where got \"%s\" this kind of facility one"
-                        , facilityType));
-            }
-            return true;
-        } catch (FacilityNotFoundException e) {
-
-            LOGGER.warning(e.getMessage());
-            System.err.println(e.getMessage());
-            return false;
+        switch (facilityType.toLowerCase(Locale.ROOT)) {
+        case "canteen":
+            facilityFound = this.findCanteen(facilityId, FileManager.getCanteens());
+            break;
+        case "library":
+            facilityFound = this.findLibrary(facilityId, FileManager.getLibraries());
+            break;
+        case "lecturetheater":
+            facilityFound = this.findLectureTheater(facilityId, FileManager.getLectureTheaters());
+            break;
+        default:
+            throw new FacilityNotFoundException(String.format("Go die lah where got \"%s\" this kind of facility one"
+                    , facilityType));
         }
+        return true;
     }
 }

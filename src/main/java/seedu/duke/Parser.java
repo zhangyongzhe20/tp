@@ -1,20 +1,35 @@
 package seedu.duke;
 
-import java.util.Locale;
+import exceptions.InvalidSearchException;
 
 //@@chenling
 public class Parser {
 
-    public static String getFacilitySearch(String userInput) {
+    public static String getFacilitySearch(String userInput) throws InvalidSearchException {
+        if (userInput.length() < 7) {
+            throw new InvalidSearchException("No parameters provided for search function :(");
+        }
         int index = userInput.indexOf('/');
+        if (index == -1) {
+            throw new InvalidSearchException("Invalid syntax for search!!! It must be: \"search facilityType/facilityId\"");
+        }
         String facility = userInput.substring(7,index);
         return facility;
     }
 
-    public static int getIdSearch(String userInput) {
+    public static int getIdSearch(String userInput) throws InvalidSearchException {
         int index = userInput.indexOf('/');
-        int id = Integer.parseInt(userInput.substring(index + 1));
-        return id;
+        if (index == -1) {
+            throw new InvalidSearchException("Invalid syntax for search!!! It must be: \"search facilityType/facilityId\"");
+        }
+        String searchIdString = userInput.substring(index + 1);
+        try {
+            return Integer.parseInt(searchIdString);
+        } catch (NumberFormatException exception) {
+            throw new InvalidSearchException(String.format("facilityId provided to search must be an integer! " +
+                    "\"%s\" is not a valid integer.", searchIdString));
+        }
+
     }
 
     public static String getBuildingName(String userInput) {
@@ -71,14 +86,14 @@ public class Parser {
     }
 
     public static boolean isSearch(String userInput) {
-        if (userInput.length() > 6) {
+        if (userInput.length() >= 6) {
             return userInput.startsWith("search");
         }
         return false;
     }
 
     public static boolean isSearchIn(String userInput) {
-        if (userInput.length() > 9) {
+        if (userInput.length() >= 9) {
             return userInput.startsWith("search in");
         }
         return false;

@@ -1,9 +1,8 @@
 package seedu.duke;
 
-import control.findNearest;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 //@author geezzzyyy
 class ParserTest {
