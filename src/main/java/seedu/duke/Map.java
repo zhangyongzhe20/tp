@@ -6,10 +6,10 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
+import control.FileManager;
 import control.FindInBuilding;
 import control.SearchFacility;
 import control.findNearest;
-import control.FileManager;
 import entity.Location;
 import exceptions.BuildingNotFoundException;
 import exceptions.FacilityNotFoundException;
@@ -24,14 +24,13 @@ public class Map {
     private static SearchFacility searchFacility = new SearchFacility(dataController);
     private static FindInBuilding findInBuilding = new FindInBuilding(dataController);
 
+    //logger
+    private static final Logger LOGGER = Logger.getLogger(Map.class.getName());
     public static FileManager getDataController() {
         return dataController;
     }
-    //logger
-    private static final Logger LOGGER = Logger.getLogger(Map.class.getName() );
-    /**
-     * Initialise logger configurations
-     */
+
+    // Initialise logger configurations
     static {
         try {
             InputStream inputStream = Map.class.getClassLoader().getResourceAsStream("logger.properties");
@@ -41,20 +40,32 @@ public class Map {
         }
     }
 
+    /**
+     * Prints welcome message at initial run.
+     */
     public static void show_welcome_msg() {
         System.out.println("Welcome to NTU Map \n");
         System.out.println("What would you like to do?");
     }
 
+    /**
+     * UI output for asking the user to input something again.
+     */
     public static void prompt_input() {
         System.out.println("What else would you like to do?");
     }
 
+    /**
+     * Print out the exit message upon graceful exit.
+     */
     public static void show_exit_msg() {
-        System.out.println("Bye. Hope to see you again soon!\n");
+        System.out.println("Bye. Hope you don't have to use me again! "
+                + "Otherwise you need to orientate about your own school better.\n");
     }
 
-    public static void executeCommand(String input, Command c) throws InvalidCommandException, EmptyInputException, FacilityNotFoundException, InvalidSearchException, BuildingNotFoundException {
+    public static void executeCommand(String input, Command c)
+            throws InvalidCommandException, EmptyInputException,
+            FacilityNotFoundException, InvalidSearchException, BuildingNotFoundException {
         switch (c) {
         case LIST_ALL_LOCATIONS:
             String location = parser.getLocationsList(input);
@@ -132,7 +143,7 @@ public class Map {
             prompt_input();
             userInput = ui.getString(in);
         }
-
+        show_exit_msg();
     }
 
 }
