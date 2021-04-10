@@ -74,6 +74,7 @@ public class FileManager {
      * @throws FileNotFoundException
      * @throws FileIsEmptyException
      */
+    @SuppressWarnings("checkstyle:Indentation")
     public void load() throws FileNotFoundException, FileIsEmptyException {
         int numOfFiles = files.length;
         Facility facility = new Canteen();
