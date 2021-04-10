@@ -7,6 +7,14 @@ public abstract class Facility {
     private Location location;
     private Location address;
 
+    /**
+     * Facility Constructor
+     * @param facilityID
+     * @param name
+     * @param location
+     * @param address
+     * @param type
+     */
     public Facility(int facilityID, String name, Location location, Location address, FacilityType type) {
         this.facilityID = facilityID;
         this.name = name;
@@ -39,16 +47,21 @@ public abstract class Facility {
         return type;
     }
 
-    public Location getLocation() {return location; }
-    public String getAddress() {return getLocation().getAddress(); }
+    public Location getLocation() { return location; }
+    public String getAddress() { return getLocation().getAddress(); }
 
     public void setLocation(String x, String y, String address, String building) {
-        this.location = new Location(Double.parseDouble(x),Double.parseDouble(y), address, building);
+        this.location = new Location(Double.parseDouble(x), Double.parseDouble(y), address, building);
     }
 
     public enum facilityType {
         LECTURETHEATER, CANTEEN, LIBRARY
     }
+
+    /**
+     * Convert string to enum
+     * @param type
+     */
     public void strToFacilityType(String type) {
         if (type.equalsIgnoreCase("LECTURETHEATER")) {
             this.type = FacilityType.LECTURETHEATER;
@@ -59,9 +72,12 @@ public abstract class Facility {
         }
     }
 
-    // return string representation of this facility
+    /**
+     * return string representation of this facility
+     * @return
+     */
     public String toString() {
-        return this.facilityID + " (" +  this.name + ")"  +
-                " is located at " + this.location.toString();
+        return this.facilityID + " (" + this.name + ")"
+                + " is located at " + this.location.toString();
     }
 }

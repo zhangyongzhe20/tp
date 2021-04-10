@@ -1,4 +1,4 @@
-package seedu.duke;
+package control;
 import exceptions.FileIsEmptyException;
 import control.FileManager;
 
