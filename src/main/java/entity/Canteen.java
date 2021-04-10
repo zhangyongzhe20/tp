@@ -1,8 +1,8 @@
 package entity;
 
 //@@author zhangyongzhe20
-public class Canteen extends Facility{
-    public Canteen(int facilityID, String name, Location location, Location address){
+public class Canteen extends Facility {
+    public Canteen(int facilityID, String name, Location location, Location address) {
         super(facilityID, name, location, address, FacilityType.CANTEEN);
     }
 
@@ -10,7 +10,7 @@ public class Canteen extends Facility{
         super();
     }
 
-    public Canteen(int facilityID, String name, Location location){
+    public Canteen(int facilityID, String name, Location location) {
         super(facilityID, name, location, location, FacilityType.CANTEEN);
     }
 }
