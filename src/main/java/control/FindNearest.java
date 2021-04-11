@@ -1,16 +1,16 @@
 package control;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import entity.Facility;
 import entity.Location;
 import exceptions.FacilityNotFoundException;
 
-import java.util.ArrayList;
-import java.util.List;
-
 //@author geezzzyyy
-public class findNearest {
+public class FindNearest {
     static FileManager dataController;
-    public findNearest(FileManager dataController) {
+    public FindNearest(FileManager dataController) {
         this.dataController = dataController;
     }
 

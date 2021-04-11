@@ -4,8 +4,6 @@ import java.util.Scanner;
 //@@chenling
 public class UI {
 
-    public static Scanner in = new Scanner(System.in);
-
     public UI() {
     }
 
