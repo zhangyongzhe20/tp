@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 import control.FileManager;
 import control.FindInBuilding;
 import control.SearchFacility;
-import control.findNearest;
+import control.FindNearest;
 import entity.Location;
 import exceptions.BuildingNotFoundException;
 import exceptions.FacilityNotFoundException;
@@ -82,7 +82,7 @@ public class Map {
             break;
         case FIND_FACILITY:
             String facilityLocation = parser.getFindFacilityLocation(input);
-            findNearest find = new findNearest(dataController);
+            FindNearest find = new FindNearest(dataController);
             Location currentLocation = find.findFacilityByName(facilityLocation).getLocation();
             String facilityType = parser.getFindFacilityType(input);
             int topK = parser.getTopK(input);

@@ -1,9 +1,10 @@
 package seedu.duke;
 
-import control.FileManager;
-import entity.Facility;
 import java.util.ArrayList;
 import java.util.List;
+
+import control.FileManager;
+import entity.Facility;
 
 //@@cswbibibi
 public class Feature {
@@ -36,7 +37,8 @@ public class Feature {
                 System.out.println("Sorry, there's no such facility");
             }
         } catch (Exception e) {
-            System.out.println("We couldn't find the facility you are searching, please input the correct facility name.");
+            System.out.println(
+                    "We couldn't find the facility you are searching, please input the correct facility name.");
         }
         return list;
     }

@@ -7,8 +7,14 @@ public class Location {
     private String address;
     private String building;
 
-    // create and initialize a point with given
-    // (latitude, longitude) specified in degrees
+    /**
+     * create and initialize a point with given
+     * (latitude, longitude) specified in degrees
+     * @param latitude
+     * @param longitude
+     * @param address
+     * @param building
+     */
     public Location(double latitude, double longitude, String address, String building) {
         this.latitude  = latitude;
         this.longitude = longitude;
@@ -16,8 +22,12 @@ public class Location {
         this.building = building;
     }
 
-    // return distance between this location and that location
-    // measured in statute miles
+    /**
+     * return distance between this location and that location
+     * measured in statute miles
+     * @param that - another location
+     * @return
+     */
     public double distanceTo(Location that) {
         double STATUTE_MILES_PER_NAUTICAL_MILE = 1.15077945;
         double lat1 = Math.toRadians(this.latitude);

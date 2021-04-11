@@ -21,7 +21,7 @@ class findNearestTest {
     @Test
     void findFacilityByName_validLibrary() throws FacilityNotFoundException {
         Map map = new Map();
-        findNearest findNearest = new findNearest(map.getDataController());
+        FindNearest findNearest = new FindNearest(map.getDataController());
         String outputFacility = findNearest.findFacilityByName("library1").getName();
         String expectedFacilityFound = "library1";
         assertEquals(expectedFacilityFound, outputFacility);
@@ -31,7 +31,7 @@ class findNearestTest {
     @Test
     void findFacilityByName_validCanteen() throws FacilityNotFoundException {
         Map map = new Map();
-        findNearest findNearest = new findNearest(map.getDataController());
+        FindNearest findNearest = new FindNearest(map.getDataController());
         String outputFacility = findNearest.findFacilityByName("canteen1").getName();
         String expectedFacilityFound = "canteen1";
         assertEquals(expectedFacilityFound, outputFacility);
@@ -41,7 +41,7 @@ class findNearestTest {
     @Test
     void findFacilityByName_validLT() throws FacilityNotFoundException {
         Map map = new Map();
-        findNearest findNearest = new findNearest(map.getDataController());
+        FindNearest findNearest = new FindNearest(map.getDataController());
         String outputFacility = findNearest.findFacilityByName("lectureTheater1").getName();
         String expectedFacilityFound = "lectureTheater1";
         assertEquals(expectedFacilityFound, outputFacility);
@@ -50,7 +50,7 @@ class findNearestTest {
     @Test
     void findFacilityByName_invalidLT() {
         Map map = new Map();
-        findNearest findNearest = new findNearest(map.getDataController());
+        FindNearest findNearest = new FindNearest(map.getDataController());
         assertThrows(FacilityNotFoundException.class, () -> {
             findNearest.findFacilityByName( "lectureTheater3");
         });
@@ -64,7 +64,7 @@ class findNearestTest {
         Location testLibrary = getTestLibrary();
         String facilityType = "shop";
         assertThrows(FacilityNotFoundException.class, () -> {
-            new findNearest(map.getDataController()).findTopKFacility(testLibrary, facilityType, 2);
+            new FindNearest(map.getDataController()).findTopKFacility(testLibrary, facilityType, 2);
         });
 
     }
@@ -76,7 +76,7 @@ class findNearestTest {
         Location testLibrary = getTestLibrary();
         String facilityType = "canteen";
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            new findNearest(map.getDataController()).findTopKFacility(testLibrary, facilityType, 5);
+            new FindNearest(map.getDataController()).findTopKFacility(testLibrary, facilityType, 5);
         });
 
     }
@@ -87,7 +87,7 @@ class findNearestTest {
         Map map = new Map();
         Location testLibrary = getTestLibrary();
         String facilityType = "canteen";
-        new findNearest(map.getDataController()).findTopKFacility(testLibrary, facilityType, 2);
+        new FindNearest(map.getDataController()).findTopKFacility(testLibrary, facilityType, 2);
         String theOutput = getOut();
         String expectedOutput = "canteen1@N4-01-01\n" +
                 "canteen3@N5-04-01\n";
