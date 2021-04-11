@@ -7,6 +7,14 @@ public abstract class Facility {
     private Location location;
     private Location address;
 
+    /**
+     * Facility Constructor
+     * @param facilityID
+     * @param name
+     * @param location
+     * @param address
+     * @param type
+     */
     public Facility(int facilityID, String name, Location location, Location address, entity.FacilityType type) {
         this.facilityID = facilityID;
         this.name = name;
@@ -47,9 +55,13 @@ public abstract class Facility {
     }
 
     public void setLocation(String x, String y, String address, String building) {
-        this.location = new Location(Double.parseDouble(x),Double.parseDouble(y), address, building);
+        this.location = new Location(Double.parseDouble(x), Double.parseDouble(y), address, building);
     }
 
+    /**
+     * Convert string to enum
+     * @param type
+     */
     public void strToFacilityType(String type) {
         if (type.equalsIgnoreCase("LECTURETHEATER")) {
             this.type = entity.FacilityType.LECTURETHEATER;

@@ -8,28 +8,25 @@ public class Location {
     private String building;
 
     /**
-     * create and initialize a point with given
-     * (latitude, longitude) specified in degrees
+     * Create and initialize a point with given, (latitude, longitude) specified in degrees
      * @param latitude
      * @param longitude
      * @param address
      * @param building
      */
     public Location(double latitude, double longitude, String address, String building) {
-        this.latitude  = latitude;
+        this.latitude = latitude;
         this.longitude = longitude;
         this.address = address;
         this.building = building;
     }
-
     /**
-     * return distance between this location and that location
-     * measured in statute miles
-     * @param that - another location
+     * Return distance between this location and that location measured in statute miles
+     * @param that
      * @return
      */
     public double distanceTo(Location that) {
-        double STATUTE_MILES_PER_NAUTICAL_MILE = 1.15077945;
+        double Mile_Unit = 1.15077945;
         double lat1 = Math.toRadians(this.latitude);
         double lon1 = Math.toRadians(this.longitude);
         double lat2 = Math.toRadians(that.latitude);
@@ -41,13 +38,13 @@ public class Location {
 
         // each degree on a great circle of Earth is 60 nautical miles
         double nauticalMiles = 60 * Math.toDegrees(angle);
-        double statuteMiles = STATUTE_MILES_PER_NAUTICAL_MILE * nauticalMiles;
+        double statuteMiles = Mile_Unit * nauticalMiles;
         return statuteMiles;
     }
 
     // return string representation of this point
     public String toString() {
-        return " (" + latitude + ", " + longitude +  ", " + address + ")";
+        return " (" + latitude + ", " + longitude + ", " + address + ")";
     }
 
     public String getAddress() {

@@ -1,49 +1,34 @@
 package control;
+
+import static java.lang.System.err;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
+
 import entity.Canteen;
 import entity.Facility;
 import entity.LectureTheater;
 import entity.Library;
 import exceptions.FileIsEmptyException;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.logging.Logger;
-
-import static java.lang.System.err;
-import static java.lang.System.exit;
-
 //@@author zhangyongzhe20
 public class FileManager {
-    static List<Facility> canteens;
-    static List<Facility> libraries;
-    static List<Facility> lectureTheaters;
+    protected static String[] files = {"canteens.txt", "libraries.txt", "lectureTheaters.txt"};
+    protected static List<Facility> canteens;
+    protected static List<Facility> libraries;
+    protected static List<Facility> lectureTheaters;
     //logger
     private static final Logger LOGGER = Logger.getLogger(FileManager.class.getName() );
-    public static String[] files = {"canteens.txt", "libraries.txt", "lectureTheaters.txt"};
 
-    public static List<Facility> getFacilities() {
-        List<Facility> mergedFacilities = new ArrayList<>();
-        mergedFacilities.addAll(canteens);
-        mergedFacilities.addAll(libraries);
-        mergedFacilities.addAll(lectureTheaters);
-
-        return mergedFacilities;
-    }
-
-    public static List<Facility> getCanteens() {
-        return canteens;
-    }
-
-    public static List<Facility> getLibraries() { return libraries;
-    }
-
-    public static List<Facility> getLectureTheaters() {
-        return lectureTheaters;
-    }
-
-
+    /**
+     * File Manager
+     */
     public FileManager() {
         this.canteens = new ArrayList<>();
         this.libraries = new ArrayList<>();
@@ -63,6 +48,33 @@ public class FileManager {
         }
     }
 
+    public static List<Facility> getFacilities() {
+        List<Facility> mergedFacilities = new ArrayList<>();
+        mergedFacilities.addAll(canteens);
+        mergedFacilities.addAll(libraries);
+        mergedFacilities.addAll(lectureTheaters);
+
+        return mergedFacilities;
+    }
+
+
+
+    public static List<Facility> getCanteens() {
+        return canteens;
+    }
+
+    public static List<Facility> getLibraries() { return libraries; }
+
+    public static List<Facility> getLectureTheaters() {
+        return lectureTheaters;
+    }
+
+    /**
+     * Load data
+     * @throws FileNotFoundException
+     * @throws FileIsEmptyException
+     */
+    @SuppressWarnings("checkstyle:Indentation")
     public void load() throws FileNotFoundException, FileIsEmptyException {
         int numOfFiles = files.length;
         Facility facility = new Canteen();
@@ -73,7 +85,7 @@ public class FileManager {
             for (int i = 0; i < numOfFiles; i++) {
 
                 inputStream = classLoader.getResourceAsStream(files[i]);
-                if(inputStream == null){
+                if (inputStream == null) {
                     throw new FileNotFoundException("No data file is found!");
                 }
                 if (inputStream.read() == -1) {
