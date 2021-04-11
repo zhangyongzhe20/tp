@@ -1,6 +1,6 @@
-package seedu.duke;
+package control;
 import exceptions.FileIsEmptyException;
-import control.loadData;
+import control.FileManager;
 
 import entity.Canteen;
 import entity.Facility;
@@ -21,14 +21,14 @@ public class loadDataTest {
 
     @Test
     public void constructor_fileIsEmpty_exceptionThrown() throws Exception, FileIsEmptyException {
-        loadData ld = new loadData();
+        FileManager ld = new FileManager();
         assertDoesNotThrow(() -> ld.load());
     }
 
 
     @Test
     public void load_validFormat() throws Exception, FileIsEmptyException {
-        loadData ld = new loadData();
+        FileManager ld = new FileManager();
         ld.load();
         List<Facility> actualAb = ld.getCanteens();
         List<Facility> expectedAb = getTestCanteen();

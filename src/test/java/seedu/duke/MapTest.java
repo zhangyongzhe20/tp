@@ -10,8 +10,10 @@ import java.io.PrintStream;
 
 import org.junit.jupiter.api.Test;
 
+import exceptions.BuildingNotFoundException;
 import exceptions.FacilityNotFoundException;
 import exceptions.InvalidCommandException;
+import exceptions.InvalidSearchException;
 
 //@author geezzzyyy
 class MapTest {
@@ -19,7 +21,7 @@ class MapTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Test
-    void executeFindNearestCommand() throws FacilityNotFoundException, EmptyInputException, InvalidCommandException {
+    void executeFindNearestCommand() throws FacilityNotFoundException, EmptyInputException, InvalidCommandException, InvalidSearchException, BuildingNotFoundException {
         captureOut();
         Map map = new Map();
         String input = "findFacility <library1> <Canteen> <2>";
@@ -59,6 +61,23 @@ class MapTest {
             map.executeCommand("invalidCommand", Command.INVALID);
         });
     }
+
+    @Test
+    void search_invalidInput_doesNotCrash() {
+        Map map = new Map();
+        assertThrows(InvalidSearchException.class, () -> {
+            map.executeCommand("search<library92>", Command.SEARCH);
+        });
+    }
+
+    @Test
+    void searchIn_emptyInput_doesNotCrash() {
+        Map map = new Map();
+        assertThrows(BuildingNotFoundException.class, () -> {
+            map.executeCommand("search in", Command.SEARCH_IN);
+        });
+    }
+
 
     /**
      * Turns on stdOut output capture

@@ -1,31 +1,31 @@
 package control;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import entity.Facility;
 import entity.Location;
 import exceptions.FacilityNotFoundException;
 
-import java.util.ArrayList;
-import java.util.List;
-
 //@author geezzzyyy
-public class findNearest {
-    static loadData dataController;
-    public findNearest(loadData dataController) {
+public class FindNearest {
+    static FileManager dataController;
+    public FindNearest(FileManager dataController) {
         this.dataController = dataController;
     }
 
     public static Facility findFacilityByName(String facilityLocation) throws FacilityNotFoundException {
-        for (Facility f: loadData.getLibraries()) {
+        for (Facility f: FileManager.getLibraries()) {
             if (f.getName().equals(facilityLocation)) {
                 return f;
             }
         }
-        for (Facility f: loadData.getCanteens()) {
+        for (Facility f: FileManager.getCanteens()) {
             if (f.getName().equals(facilityLocation)) {
                 return f;
             }
         }
-        for (Facility f: loadData.getLectureTheaters()) {
+        for (Facility f: FileManager.getLectureTheaters()) {
             if (f.getName().equals(facilityLocation)) {
                 return f;
             }

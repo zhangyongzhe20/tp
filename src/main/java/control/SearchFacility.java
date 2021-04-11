@@ -1,16 +1,18 @@
 package control;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Locale;
+import java.util.logging.Logger;
 
 import entity.Facility;
 import exceptions.FacilityNotFoundException;
 
 public class SearchFacility {
-    loadData dataController;
+    //logger
+    private static final Logger LOGGER = Logger.getLogger(SearchFacility.class.getName());
+    private FileManager dataController;
 
-    public SearchFacility(loadData dataController) {
+    public SearchFacility(FileManager dataController) {
         this.dataController = dataController;
     }
 
@@ -29,42 +31,48 @@ public class SearchFacility {
                 return library;
             }
         }
-        throw new FacilityNotFoundException("Aiyoh where got this library one");
+        throw new FacilityNotFoundException(
+                String.format("Aiyoh where got \"%d\" this library one", facilityId));
     }
 
-    private Facility findLectureTheater(int facilityId, List<Facility> lectureTheaters) throws FacilityNotFoundException {
+    private Facility findLectureTheater(int facilityId, List<Facility> lectureTheaters)
+            throws FacilityNotFoundException {
         for (Facility lectureTheater : lectureTheaters) {
             if (lectureTheater.getFacilityID() == facilityId) {
                 return lectureTheater;
             }
         }
-        throw new FacilityNotFoundException("Aiyoh where got this lecture theater one");
+        throw new FacilityNotFoundException(
+                String.format("Aiyoh where got \"%d\" this lecture theater one", facilityId));
     }
 
 
-    public boolean query(String facilityType, int facilityId) {
-
+    /**
+     * Finds a facility of that type and ID, then prints out its address.
+     * @param facilityType - type of facility
+     * @param facilityId - ID of facility
+     * @return boolean: true if facility found
+     * @throws FacilityNotFoundException
+     */
+    public boolean query(String facilityType, int facilityId) throws FacilityNotFoundException {
         Facility facilityFound = null;
-        try {
-            switch (facilityType.toLowerCase(Locale.ROOT)) {
-            case "canteen":
-                facilityFound = this.findCanteen(facilityId, loadData.getCanteens());
-                break;
-            case "library":
-                facilityFound = this.findLibrary(facilityId, loadData.getLibraries());
-                break;
-            case "lecturetheater":
-                facilityFound = this.findLectureTheater(facilityId, loadData.getLectureTheaters());
-                break;
-            default:
-                throw new FacilityNotFoundException(String.format("Go die lah where got \"%s\" this kind of facility one"
-                        , facilityType));
-            }
-            System.out.println(facilityFound.getLocation());
-            return true;
-        } catch (FacilityNotFoundException e) {
-            System.err.println(e.getMessage());
-            return false;
+        switch (facilityType.toLowerCase(Locale.ROOT)) {
+        case "canteen":
+            facilityFound = this.findCanteen(facilityId, FileManager.getCanteens());
+            break;
+        case "library":
+            facilityFound = this.findLibrary(facilityId, FileManager.getLibraries());
+            break;
+        case "lecturetheater":
+            facilityFound = this.findLectureTheater(facilityId, FileManager.getLectureTheaters());
+            break;
+        default:
+            throw new FacilityNotFoundException(String.format("Go die lah where got \"%s\" this kind of facility one",
+                    facilityType));
         }
+        System.out.println(
+                String.format("%s (%d) is found at: %s", facilityType, facilityId, facilityFound.getAddress())
+        );
+        return true;
     }
 }
