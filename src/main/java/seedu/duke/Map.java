@@ -60,7 +60,7 @@ public class Map {
      */
     public static void show_exit_msg() {
         System.out.println("Bye. Hope you don't have to use me again! "
-                + "Otherwise you need to orientate about your own school better.\n");
+                + "Otherwise you need to orientate about your own school better:)\n");
     }
 
     public static void executeCommand(String input, Command c)
@@ -122,7 +122,7 @@ public class Map {
                 System.out.println(errMsg);
                 LOGGER.warning(errMsg);
             } catch (EmptyInputException e) {
-                String errMsg = "OOPS!!! The description of a new task cannot be empty.";
+                String errMsg = "OOPS!!! The command cannot be empty!";
                 System.out.println(errMsg);
                 LOGGER.warning(errMsg);
             } catch (FacilityNotFoundException e) {
