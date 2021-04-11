@@ -30,11 +30,6 @@ The class diagram shows clearly that each facility has one or more locations. Ca
 ![Class Diagram](assets/control.svg)
 Each facility has one or more locations.  All control classes, namely SeachFacility, FindNearest,FindInBuilding has an instance called dataController of FileManager to get information from the database on various facilities.
 
-We have 4 packages in total: Control, Entity, Seedu.Duke(boundary) and exception. 
-Control classes deal with the database of entity objects directly, return the wanted result after processing the database.  
-Entity classes include facilities that are available to be navigated to.
-Boundary classes take in user input and process the user input to pass to control class.
-Exception handles common exceptions such as invalid input exception etc to make sure the system runs smoothly.
 
 ### Sequence diagram for v2.0
 #### Sequence diagram for listAllLocations
