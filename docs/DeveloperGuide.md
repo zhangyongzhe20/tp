@@ -86,11 +86,11 @@ To know all the available libraries  in the school.
 To know where a lecture theater is if a user knows its ID.
 
 9. View the location of a specific canteen in school `[nice-to-have]`
-* As a user , I can view the list of all canteens in the school.
+* As a user, I can view the list of all canteens in the school.
 To know where a canteen is if a user knows its ID.
 
-10. View the location of a specifc library in school `[nice-to-have]`
-* As a user , I can view the list of all canteens in the school.
+10. View the location of a specific library in school `[nice-to-have]`
+* As a user, I can view the list of all canteens in the school.
 To know where a library is if a user knows its ID.
 
 ### Non-Functional Requirements
