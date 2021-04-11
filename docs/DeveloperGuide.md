@@ -22,7 +22,13 @@
 ## Design & implementation
 
 ### Class diagram for v2.0
-![Class Diagram](assets/classdiagram.svg)
+#### Class diagram for Entity classes:
+![Class Diagram](assets/entity.svg)
+The class diagram shows clearly that each facility has one or more locations. Canteen, LectureTheater and Library inherit from Facility.
+
+#### Class diagram for Control classes:
+![Class Diagram](assets/control.svg)
+Each facility has one or more locations.  All control classes, namely SeachFacility, FindNearest,FindInBuilding has an instance called dataController of FileManager to get information from the database on various facilities.
 
 We have 4 packages in total: Control, Entity, Seedu.Duke(boundary) and exception. 
 Control classes deal with the database of entity objects directly, return the wanted result after processing the database.  
