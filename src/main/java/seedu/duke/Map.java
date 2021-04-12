@@ -93,13 +93,15 @@ public class Map {
             break;
         case FIND_FACILITY:
             String facilityLocation = parser.getFindFacilityLocation(input);
-            if(Objects.nonNull(facilityLocation)) {
+            if (Objects.nonNull(facilityLocation)) {
                 FindNearest find = new FindNearest(dataController);
                 Location currentLocation = find.findFacilityByName(facilityLocation).getLocation();
                 String facilityType = parser.getFindFacilityType(input);
-                if(Objects.nonNull(facilityType)) {
+                if (Objects.nonNull(facilityType)) {
                     int topK = parser.getTopK(input);
-                    if(topK !=0) find.findTopKFacility(currentLocation, facilityType, topK);
+                    if (topK != 0) {
+                        find.findTopKFacility(currentLocation, facilityType, topK);
+                    }
                 }
             }
             break;
