@@ -1,6 +1,7 @@
 package seedu.duke;
 
 import java.io.InputStream;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
@@ -82,11 +83,15 @@ public class Map {
             break;
         case FIND_FACILITY:
             String facilityLocation = parser.getFindFacilityLocation(input);
-            FindNearest find = new FindNearest(dataController);
-            Location currentLocation = find.findFacilityByName(facilityLocation).getLocation();
-            String facilityType = parser.getFindFacilityType(input);
-            int topK = parser.getTopK(input);
-            find.findTopKFacility(currentLocation, facilityType, topK);
+            if(Objects.nonNull(facilityLocation)) {
+                FindNearest find = new FindNearest(dataController);
+                Location currentLocation = find.findFacilityByName(facilityLocation).getLocation();
+                String facilityType = parser.getFindFacilityType(input);
+                if(Objects.nonNull(facilityType)) {
+                    int topK = parser.getTopK(input);
+                    if(topK !=0) find.findTopKFacility(currentLocation, facilityType, topK);
+                }
+            }
             break;
         case INVALID:
             throw new InvalidCommandException();
