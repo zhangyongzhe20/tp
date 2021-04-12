@@ -61,7 +61,7 @@ public class Map {
      */
     public static void show_exit_msg() {
         System.out.println("Bye. Hope you don't have to use me again! "
-                + "Otherwise you need to orientate about your own school better:)\n");
+                + "Otherwise you need to orientate about your own school better :)\n");
     }
 
     /**
